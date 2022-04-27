@@ -2,6 +2,8 @@ package com.sistema.olimpiadas.controlador;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import com.sistema.olimpiadas.modelo.Juez;
 import com.sistema.olimpiadas.servicio.JuezServicio;
 import com.sistema.olimpiadas.util.paginacion.PageRender;
@@ -12,9 +14,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -48,6 +53,31 @@ public class JuezController {
     modelo.addAttribute("page", pageRender);
 
     return "listar";
+  }
+
+  @GetMapping("/form")
+  public String mostrarFormularioDeRegistroJuez(Map<String, Object> modelo) {
+    Juez juez = new Juez();
+    modelo.put("juez", juez);
+    modelo.put("titulo", "Registro de jueces");
+    return "form";
+  }
+
+  @PostMapping("/form")
+  public String guardarJuez(@Valid Juez juez, BindingResult result, Model modelo, RedirectAttributes flash,
+      SessionStatus status) {
+    if (result.hasErrors()) {
+      modelo.addAttribute("titulo", "Registro de juez");
+      return "form";
+    }
+
+    String mensaje = (juez.getId() != null) ? "El juez ha sido editado con exito"
+        : "Juez registrado con exito";
+
+    juezServicio.guardarJuez(juez);
+    status.setComplete();
+    flash.addFlashAttribute("success", mensaje);
+    return "redirect:/listar";
   }
 
 }
