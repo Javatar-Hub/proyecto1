@@ -80,4 +80,24 @@ public class JuezController {
     return "redirect:/listar";
   }
 
+  @GetMapping("/form/{id}")
+  public String editarJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
+      RedirectAttributes flash) {
+    Juez juez = null;
+    if (id > 0) {
+      juez = juezServicio.findOne(id);
+      if (juez == null) {
+        flash.addFlashAttribute("error", "El ID del juez no existe en la base de datos");
+        return "redirect:/listar";
+      }
+    } else {
+      flash.addFlashAttribute("error", "El ID del juez no puede ser cero");
+      return "redirect:/listar";
+    }
+
+    modelo.put("juez", juez);
+    modelo.put("titulo", "Edición de juez");
+    return "form";
+  }
+
 }
