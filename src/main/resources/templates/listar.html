@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout/layout :: head">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Jueces</title>
+  </head>
+  <body>
+    <header th:replace="layout/layout :: header"></header>
+    <div class="container">
+      <div class="py-4 ml-5 mr-5">
+        <div class="card bg-light">
+          <h4 class="card-header" th:text="${titulo}"></h4>
+          <div class="card-body table-responsive">
+            <h4 class="card-title"></h4>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Apellido Paterno</th>
+                  <th>Apellido Materno</th>
+                  <th>Usuario</th>
+                  <th>Disciplina</th>
+                  <th>Edad</th>
+                  <th>Foto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="juez : ${jueces}">
+                  <td th:text="${juez.id}">Nombre</td>
+                  <td th:text="${juez.nombre}">Nombre</td>
+                  <td th:text="${juez.paterno}">Apellido Paterno</td>
+                  <td th:text="${juez.materno}">Apellido Materno</td>
+                  <td th:text="${juez.usuario}">Usuario</td>
+                  <td th:text="${juez.disciplina}">Disciplina</td>
+                  <td th:text="${juez.edad}">Edad</td>
+                  <td th:text="${juez.foto}">Foto</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </body>
+</html>
