@@ -100,4 +100,13 @@ public class JuezController {
     return "form";
   }
 
+  @GetMapping("/eliminar/{id}")
+  public String eliminarJuez(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
+    if (id > 0) {
+      juezServicio.eliminarJuez(id);
+      flash.addFlashAttribute("success", "Juez eliminado con exito");
+    }
+    return "redirect:/listar";
+  }
+
 }
