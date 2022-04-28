@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout/layout :: head">
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <header th:replace="layout/layout :: header"></header>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+          <h1 class="text-center">Registro de Jueces</h1>
+          <div class="card-body">
+            <form th:action="@{/form}" th:object="${juez}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" name="nombre" th:field="*{nombre}" placeholder="Escriba su Nombre" required />
+              </div>
+
+              <div class="form-group">
+                <label for="paterno">Apellido Paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="paterno"
+                  th:field="*{paterno}"
+                  placeholder="Escriba su Apellido paterno"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="materno">Apellido Materno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="materno"
+                  th:field="*{materno}"
+                  placeholder="Escriba su Apellido materno"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="usuario">Nombre de Usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="usuario"
+                  th:field="*{usuario}"
+                  placeholder="Escriba el nombre de Usuario"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="edad">Edad</label>
+                <input
+                  type="number"
+                  min="18"
+                  max="99"
+                  value="18"
+                  class="form-control"
+                  name="edad"
+                  th:field="*{edad}"
+                  placeholder="Escriba la edad del Juez"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Contraseña Temporal</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  th:field="*{password}"
+                  placeholder="Escriba una contraseña temporal"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Disciplina : </label>
+                <select class="form-control" th:field="*{disciplina}">
+                  <option th:value="Futbol">Futbol</option>
+                  <option th:value="Natacion">Natacion</option>
+                  <option th:value="Otro">Otro</option>
+                </select>
+              </div>
+              <label for="foto">Foto de perfil:</label>
+              <input class="form-control" name="file" type="file" id="foto" />
+              <div class="box-footer">
+                <br />
+
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <button type="cancel" class="btn btn-danger" onclick="window.location='/'">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </body>
+</html>

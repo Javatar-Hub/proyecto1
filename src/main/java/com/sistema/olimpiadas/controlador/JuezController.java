@@ -1,5 +1,9 @@
 package com.sistema.olimpiadas.controlador;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -60,15 +65,35 @@ public class JuezController {
     Juez juez = new Juez();
     modelo.put("juez", juez);
     modelo.put("titulo", "Registro de jueces");
-    return "form";
+    return "crear_juez";
   }
 
   @PostMapping("/form")
-  public String guardarJuez(@Valid Juez juez, BindingResult result, Model modelo, RedirectAttributes flash,
+  public String guardarJuez(@Valid Juez juez, BindingResult result, Model modelo,
+      @RequestParam("file") MultipartFile foto, RedirectAttributes flash,
       SessionStatus status) {
     if (result.hasErrors()) {
       modelo.addAttribute("titulo", "Registro de juez");
       return "form";
+    }
+
+    if (!foto.isEmpty())
+
+    {
+      Path directorioImagenes = Paths.get("src/main/resources/static/images/");
+      String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+
+      try {
+        byte[] bytesImg = foto.getBytes();
+        Path rutaCompleta = Paths.get(rutaAbsoluta + "//" + foto.getOriginalFilename());
+        Files.write(rutaCompleta, bytesImg);
+
+        juez.setFoto(foto.getOriginalFilename());
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
+
     }
 
     String mensaje = (juez.getId() != null) ? "El juez ha sido editado con exito"
@@ -97,7 +122,7 @@ public class JuezController {
 
     modelo.put("juez", juez);
     modelo.put("titulo", "Edición de juez");
-    return "form";
+    return "crear_juez";
   }
 
   @GetMapping("/eliminar/{id}")

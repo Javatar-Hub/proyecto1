@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "jueces")
@@ -31,7 +32,7 @@ public class Juez {
   @Column(name = "Nombre_de_usuario", nullable = false, length = 50, unique = true)
   private String usuario;
 
-  @NotEmpty
+  @NotNull
   @Column(name = "Edad", nullable = false, length = 2)
   private int edad;
 
