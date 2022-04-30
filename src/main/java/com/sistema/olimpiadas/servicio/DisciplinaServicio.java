@@ -11,6 +11,6 @@ public interface DisciplinaServicio {
     public Page<Disciplina> visualizarDisciplinas(Pageable pageable);
     public Disciplina guardarDisciplina(Disciplina disciplina);
     public Disciplina findOne(Long id);
-    public Disciplina eliminarDisciplina(Disciplina disciplina);
+    public void eliminarDisciplina(Long id);
 
 }
