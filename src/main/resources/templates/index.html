@@ -1,0 +1,102 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+</style>
+<link rel="stylesheet" href="/css/styles.css" />
+<html xmlns:th="http://www.thymeleaf.org">
+  <title>Admin Links</title>
+
+  <body>
+    <h1 class="Titulo app-header" sec:authorize="hasRole('ADMIN')">Dashboard de Administrador</h1>
+    <div class="courses-container zoom" sec:authorize="hasRole('ADMIN')">
+      <div class="course">
+        <div class="jueces-color">
+          <h1>👨🏻‍⚖️</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Gestion y administracion de jueces</h6>
+          <h2>Gestion de jueces</h2>
+          <a class="btn-jueces" href="/listar">Ver mas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-container zoom" sec:authorize="hasRole('ADMIN')">
+      <div class="course">
+        <div class="disciplinas-color">
+          <h1>⚽️</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Gestion y administracion de disciplinas</h6>
+          <h2>Gestion de disciplinas</h2>
+          <a class="btn-disciplinas" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-container zoom" sec:authorize="hasRole('ADMIN')">
+      <div class="course">
+        <div class="entrenadores-color">
+          <h1>🧢</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Consulta</h6>
+          <h2>Consultar entrenadores</h2>
+          <a class="btn-entrenadores" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-container zoom" sec:authorize="hasRole('ADMIN')">
+      <div class="course">
+        <div class="competidores-color">
+          <h1>🎽</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Consulta</h6>
+          <h2>Consultar competidores</h2>
+          <a class="btn-competidores" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
+    <h1 class="Titulo app-header" sec:authorize="hasRole('USER')">Dashboard de Jueces</h1>
+    <div class="courses-container zoom" sec:authorize="hasRole('USER')">
+      <div class="course">
+        <div class="calificar-color">
+          <h1>💯</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Calificar</h6>
+          <h2>Calificar competidores</h2>
+          <a class="btn-calificar" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="courses-container zoom" sec:authorize="hasRole('USER')">
+      <div class="course">
+        <div class="comentario-color">
+          <h1>🗣</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Comentarios</h6>
+          <h2>Agregar comentarios</h2>
+          <a class="btn-comentario" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <form class="d-flex" th:action="@{/logout}" method="post">
+    <input type="submit" class="floating-btn" value="Cerrar sesión" />
+  </form>
+
+  <!-- SOCIAL PANEL HTML -->
+
+  <div class="floating-text">Bienvenido <a> [[${#httpServletRequest.remoteUser}]]</a></div>
+</html>

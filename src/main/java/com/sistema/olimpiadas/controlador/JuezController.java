@@ -22,6 +22,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,6 +34,11 @@ public class JuezController {
 
   @Autowired
   private JuezServicio juezServicio;
+
+  @RequestMapping(value = "/", method = RequestMethod.GET)
+  public String index() {
+    return "index";
+  }
 
   @GetMapping("/ver/{id}")
   public String verDetallesDelJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
@@ -47,7 +54,7 @@ public class JuezController {
     return "ver";
   }
 
-  @GetMapping({ "/", "/listar", "" })
+  @GetMapping({ "/listar" })
   public String listarJueces(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
     Pageable pageRequest = PageRequest.of(page, 10);
     Page<Juez> jueces = juezServicio.visualizarJueces(pageRequest);
