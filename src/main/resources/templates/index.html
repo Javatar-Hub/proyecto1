@@ -92,7 +92,7 @@
     </div>
   </body>
 
-  <form class="d-flex" th:action="@{/logout}" method="post">
+  <form class="d-flex" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
     <input type="submit" class="floating-btn" value="Cerrar sesión" />
   </form>
 
