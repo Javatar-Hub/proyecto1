@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org">
   <head th:fragment="head">
     <meta charset="UTF-8" />
@@ -12,28 +13,18 @@
     />
   </head>
   <body>
-    <header th:fragment="header">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/login">PROMETEO 🏆</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-    </header>
-    <section class="vh-100" style="background-color: #508bfc">
+    <header th:fragment="header"></header>
+    <section class="vh-100">
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card shadow-2-strong" style="border-radius: 1rem">
               <div class="card-body p-5 text-center">
+                <img
+                  src="https://logodownload.org/wp-content/uploads/2020/03/olimpiada-olympic-games-logo-0.png"
+                  width="100"
+                  alt="Prometeo"
+                />
                 <h3 class="mb-5">Inicio de sesión</h3>
                 <div th:if="${param.error}">
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -47,9 +38,7 @@
                 <div th:if="${param.logout}">
                   <div class="alert alert-primary alert-dismissible fade show" role="alert">
                     Ha cerrado sesión exitosamente
-                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
                   </div>
                 </div>
                 <form th:action="@{/login}" method="post">
@@ -67,6 +56,10 @@
                 </form>
 
                 <hr class="my-4" />
+                <p class="text-center">
+                  Eres entrenador
+                  <a href="@{/register}">Registrate aqui</a>
+                </p>
               </div>
             </div>
           </div>
