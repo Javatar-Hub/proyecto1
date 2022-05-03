@@ -1,4 +1,5 @@
 package com.sistema.olimpiadas.modelo;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,50 +10,51 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "disciplinas")
-public class Disciplina{
+public class Disciplina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotEmpty
-    @Column(name= "nombre_disciplina", nullable = false , length = 50)
-    private String nombre_disciplina;
+    @Column(name = "nombre", nullable = false, length = 50)
+    private String nombre;
 
-    //constructor vacio de la disciplina
-    public Disciplina(){}
-
-    public Disciplina(long id, String nombre_disciplina){
-        super();
-        this.id=id;
-        this.nombre_disciplina=nombre_disciplina;
+    // constructor vacio de la disciplina
+    public Disciplina() {
     }
 
-    public Disciplina(String nombre_disciplina){
+    public Disciplina(Long id, String nombre) {
         super();
-        this.nombre_disciplina=nombre_disciplina;
+        this.id = id;
+        this.nombre = nombre;
     }
 
-    public long getID(){
+    public Disciplina(String nombre) {
+        super();
+        this.nombre = nombre;
+    }
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setID(long id){
-        this.id=id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNombre_Discipina(){
-        return this.nombre_disciplina;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setNombre_Disciplina(String nombre_disciplina){
-        this.nombre_disciplina=nombre_disciplina;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
-    public String toString(){
-        return "{"+
-            "id=" + getID() + "'" +
-            ", nombre_disciplinas" + getNombre_Discipina() + "'" +
-        "}";
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", nombre='" + getNombre() + "'" +
+                "}";
     }
 }

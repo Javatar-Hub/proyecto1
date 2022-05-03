@@ -21,7 +21,8 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Nombre</th>
+                  <th>Disciplina</th>
+                  <th>Detalles</th>
                   <th sec:authorize="hasRole('ADMIN')">Editar</th>
                   <th sec:authorize="hasRole('ADMIN')">Eliminar</th>
                 </tr>
@@ -29,7 +30,7 @@
               <tbody>
                 <tr th:each="disciplina : ${Disciplinas}">
                   <td th:text="${disciplina.id}">Nombre</td>
-                  <td th:text="${disciplina.nombre_disciplina}">Nombre</td>
+                  <td th:text="${disciplina.nombre}">Nombre</td>
                   <td><a class="btn btn-info btn-sm" th:href="@{/verDisciplinas/} + ${disciplina.id}">Detalles</a></td>
                   <td sec:authorize="hasRole('ADMIN')">
                     <a class="btn btn-warning btn-sm" th:href="@{/crear_disciplina/} + ${disciplina.id}">Editar</a>
