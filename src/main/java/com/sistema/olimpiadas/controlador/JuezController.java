@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.Juez;
+import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.JuezServicio;
 import com.sistema.olimpiadas.util.paginacion.PageRender;
 
@@ -67,11 +70,17 @@ public class JuezController {
     return "listar";
   }
 
+  @Autowired
+  private DisciplinaRepository disciplinaRepository;
+
   @GetMapping("/form")
-  public String mostrarFormularioDeRegistroJuez(Map<String, Object> modelo) {
-    Juez juez = new Juez();
-    modelo.put("juez", juez);
-    modelo.put("titulo", "Registro de jueces");
+  public String mostrarFormularioDeRegistroJuez(Model modelo) {
+    List<Disciplina> disciplinas = disciplinaRepository.findAll();
+
+    modelo.addAttribute("juez", new Juez());
+    modelo.addAttribute("disciplinas", disciplinas);
+    ((Map<String, Object>) modelo).put("titulo", "Registro de Jueces");
+
     return "crear_juez";
   }
 
@@ -113,8 +122,11 @@ public class JuezController {
   }
 
   @GetMapping("/form/{id}")
-  public String editarJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
+  public String editarJuez(@PathVariable(value = "id") Long id, Model modelo,
       RedirectAttributes flash) {
+    List<Disciplina> disciplinas = disciplinaRepository.findAll();
+    modelo.addAttribute("juez", new Juez());
+    modelo.addAttribute("disciplinas", disciplinas);
     Juez juez = null;
     if (id > 0) {
       juez = juezServicio.findOne(id);
@@ -127,8 +139,8 @@ public class JuezController {
       return "redirect:/listar";
     }
 
-    modelo.put("juez", juez);
-    modelo.put("titulo", "Edición de juez");
+    ((Map<String, Object>) modelo).put("juez", juez);
+    ((Map<String, Object>) modelo).put("titulo", "Edición de juez");
     return "crear_juez";
   }
 
