@@ -64,7 +64,7 @@ Y navegue a http://127.0.0.1:8080
 - [x] Login
 - [x] CRUD Disciplinas
 - [ ] Consultar Competidores
-- [ ] CRUD Competidores
+- [x] CRUD Competidores
 - [ ] Registro entrenadores
 - [ ] Agregar comentarios
 - [ ] Consultar competidores

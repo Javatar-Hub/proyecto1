@@ -90,6 +90,34 @@
         </div>
       </div>
     </div>
+
+    <h1 class="Titulo app-header" sec:authorize="hasRole('ENTRENADOR')">Dashboard de Entrenadores</h1>
+    <div class="courses-container zoom" sec:authorize="hasRole('ENTRENADOR')">
+      <div class="course">
+        <div class="jueces-color">
+          <h1>🎽</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Gestion y administracion de competidores</h6>
+          <h2>Gestion de competidores</h2>
+          <a class="btn-jueces" href="/listarCompetidores">Ver mas</a>
+        </div>
+      </div>
+    </div>
+    <div class="courses-container zoom" sec:authorize="hasRole('ENTRENADOR')">
+      <div class="course">
+        <div class="calificar-color">
+          <h1>💯</h1>
+        </div>
+        <div class="course-info">
+          <div class="progress-container"></div>
+          <h6>Calificaciones</h6>
+          <h2>Consultar califiaciones</h2>
+          <a class="btn-calificar" href="#">Ver mas</a>
+        </div>
+      </div>
+    </div>
   </body>
 
   <form class="d-flex" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
