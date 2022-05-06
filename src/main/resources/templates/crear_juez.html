@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-          <h1 class="text-center">Registro de Jueces</h1>
+          <h1 class="text-center" th:text="${titulo}"></h1>
           <div class="card-body">
             <form th:action="@{/form}" th:object="${juez}" method="post" enctype="multipart/form-data">
               <div class="form-group">
@@ -80,13 +80,15 @@
                   required
                 />
               </div>
-              <div class="form-group">
-                <label>Disciplina : </label>
-                <select class="form-control" th:field="*{disciplina}">
-                  <option th:value="Futbol">Futbol</option>
-                  <option th:value="Natacion">Natacion</option>
-                  <option th:value="Otro">Otro</option>
-                </select>
+              <div class="form-group row">
+                <label class="col-form-label col-sm-4">Disciplina : </label>
+                <div class="col-sm-8">
+                  <select th:field="*{disciplina}" class="form-control" required>
+                    <th:block th:each="disciplina : ${disciplinas}">
+                      <option th:text="${disciplina.nombre}" th:value="${disciplina.id}"></option>
+                    </th:block>
+                  </select>
+                </div>
               </div>
               <label for="foto">Foto de perfil:</label>
               <input class="form-control" name="file" type="file" id="foto" />
