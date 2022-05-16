@@ -16,6 +16,7 @@
               <div class="form-group">
                 <label for="nombre">nombre de disciplina</label>
                 <input type="text" class="form-control" name="nombre" th:field="*{nombre}" placeholder="Escriba su nombre" required />
+                <input type="hidden" th:field="*{id}" />
               </div>
 
               <button type="submit" class="btn btn-success">Registrar</button>
