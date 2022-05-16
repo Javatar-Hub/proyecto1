@@ -112,10 +112,9 @@ public class JuezController {
 
     }
 
-    String mensaje = (juez.getId() != null) ? "El juez ha sido editado con exito"
+    System.out.println("Juez ID: " + juez.getId());
+    String mensaje = (juezServicio.guardarJuez(juez) != null) ? "El juez ha sido editado con exito"
         : "Juez registrado con exito";
-
-    juezServicio.guardarJuez(juez);
     status.setComplete();
     flash.addFlashAttribute("success", mensaje);
     return "redirect:/listar";
