@@ -148,4 +148,44 @@ public class CompetidorPorDisciplinaController {
     return "redirect:/listarCompetidores";
   }
 
+  @GetMapping(value = "/busqueda")
+  public String busquedaCompetidorPorNombre(Model modelo, @RequestParam(value = "query",required = false) String q){
+    try{
+      List<CompetidorPorDisciplina> competidorPorDisciplina= this.competidorPorDisciplinaServicio.findByNombre(q);
+      modelo.addAttribute("competidorPorDisciplina", competidorPorDisciplina);
+      modelo.addAttribute("resultado", q);
+      return "views/busqueda";
+    }catch(Exception e){
+      modelo.addAttribute("error", e.getMessage());
+      return "error";
+    }
+  }
+
+  @GetMapping(value = "/busqueda")
+  public String busquedaCompetidorPorApaterno(Model modelo, @RequestParam(value = "query",required = false) String q){
+    try{
+      List<CompetidorPorDisciplina> competidorPorDisciplina= this.competidorPorDisciplinaServicio.findByApellidopaterno(q);
+      modelo.addAttribute("competidorPorDisciplina", competidorPorDisciplina);
+      modelo.addAttribute("resultado", q);
+      return "views/busqueda";
+    }catch(Exception e){
+      modelo.addAttribute("error", e.getMessage());
+      return "error";
+    }
+  }
+
+  @GetMapping(value = "/busqueda")
+  public String busquedaCompetidorPorAmaterno(Model modelo, @RequestParam(value = "query",required = false) String q){
+    try{
+      List<CompetidorPorDisciplina> competidorPorDisciplina= this.competidorPorDisciplinaServicio.findByApellidomaterno(q);
+      modelo.addAttribute("competidorPorDisciplina", competidorPorDisciplina);
+      modelo.addAttribute("resultado", q);
+      return "views/busqueda";
+    }catch(Exception e){
+      modelo.addAttribute("error", e.getMessage());
+      return "error";
+    }
+  }
+
+
 }
