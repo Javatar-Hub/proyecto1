@@ -18,4 +18,10 @@ public interface CompetidorPorDisciplinaServicio {
 
     public void eliminarCompetidorPorDisciplina(Long id);
 
+    public List<CompetidorPorDisciplina> findByNombre(String q) throws Exception;
+
+    public List<CompetidorPorDisciplina> findByApellidopaterno(String q) throws Exception;
+
+    public List<CompetidorPorDisciplina> findByApellidomaterno(String q) throws Exception;
+
 }
