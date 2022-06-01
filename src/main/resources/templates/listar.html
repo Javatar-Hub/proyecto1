@@ -27,10 +27,12 @@
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
           </h1>
           <hr class="my-4" />
-          <h6>
+          <h6 sec:authorize="hasRole('ADMIN')">
             En este apartado podrá gestionar todo lo referente a los jueces, podrá registrar nuevos jueces, editar su información,
             eliminarlos o ver mas detalles.
           </h6>
+          <h6 sec:authorize="hasRole('USER')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
+          <h6 sec:authorize="hasRole('ENTRENADOR')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
         </div>
         <div class="card text-white" style="background-color: #ffffff2c">
           <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
