@@ -48,35 +48,5 @@ public class CompetidorPorDisciplinaImpl implements CompetidorPorDisciplinaServi
 
   }
 
-  @Transactional
-  public List<CompetidorPorDisciplina> findByNombre(String q) throws Exception{
-    try{
-      List<CompetidorPorDisciplina> modelo= this.competidorPorDisciplinaRepository.findByNombre(q);
-      return modelo;
-    } catch (Exception e){
-      throw new Exception(e.getMessage());
-    }
-  }
-
-  @Transactional
-  public List<CompetidorPorDisciplina> findByApellidopaterno(String q) throws Exception{
-    try{
-      List<CompetidorPorDisciplina> modelo= this.competidorPorDisciplinaRepository.findByApellidopaterno(q);
-      return modelo;
-    } catch (Exception e){
-      throw new Exception(e.getMessage());
-    }
-  }
-
-  @Transactional
-  public List<CompetidorPorDisciplina> findByApellidomaterno(String q) throws Exception{
-    try{
-      List<CompetidorPorDisciplina> modelo= this.competidorPorDisciplinaRepository.findByApellidomaterno(q);
-      return modelo;
-    } catch (Exception e){
-      throw new Exception(e.getMessage());
-    }
-  }
-
 
 }
