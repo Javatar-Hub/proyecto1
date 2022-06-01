@@ -21,9 +21,8 @@ body {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   max-width: 100%;
-  margin: 20px;
   overflow: hidden;
-  width: 700px;
+  height: auto;
 }
 
 .course h6 {
@@ -44,18 +43,10 @@ body {
   padding: 30px;
   max-width: 250px;
 }
-.btn-jueces {
-  background-color: #2a265f;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
+
+.link {
+  text-decoration: none;
+  color: black;
 }
 
 .disciplinas-color {
@@ -64,38 +55,12 @@ body {
   padding: 30px;
   max-width: 250px;
 }
-.btn-disciplinas {
-  background-color: #26595f;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
-}
 
 .entrenadores-color {
   background-color: #57265f;
   color: #fff;
   padding: 30px;
   max-width: 250px;
-}
-.btn-entrenadores {
-  background-color: #57265f;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
 }
 
 .competidores-color {
@@ -104,19 +69,6 @@ body {
   padding: 30px;
   max-width: 250px;
 }
-.btn-competidores {
-  background-color: #5f2626;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
-}
 
 .calificar-color {
   background-color: #222779;
@@ -124,38 +76,12 @@ body {
   padding: 30px;
   max-width: 250px;
 }
-.btn-calificar {
-  background-color: #222779;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
-}
 
 .comentario-color {
   background-color: #ac5821;
   color: #fff;
   padding: 30px;
   max-width: 250px;
-}
-.btn-comentario {
-  background-color: #ac5821;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 16px;
-  padding: 12px 25px;
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  letter-spacing: 1px;
 }
 
 .course-preview a {
@@ -170,7 +96,7 @@ body {
 .course-info {
   padding: 30px;
   position: relative;
-  width: 100%;
+  width: 50%;
 }
 
 .progress-text {
@@ -281,4 +207,33 @@ body {
   .container {
     max-width: 100%;
   }
+}
+
+.float-container {
+  /* border: 3px solid #fff; */
+  width: 100%;
+  padding: 20px;
+}
+
+.float-child {
+  width: 25%;
+  float: left;
+  padding: 10px;
+  /* border: 2px solid red; */
+}
+
+.float-child-entrenadores {
+  /* width: 50%; cambiar a 50% si queremos todo el div  */
+  width: auto;
+  float: left;
+  padding: 10px;
+  /* border: 2px solid orange; */
+}
+
+.float-child-jueces {
+  /* width: 50%; cambiar a 50% si queremos todo el div  */
+  width: auto;
+  float: left;
+  padding: 10px;
+  /* border: 2px solid green; */
 }
