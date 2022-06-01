@@ -42,6 +42,11 @@
                 ><i class="fa-solid fa-circle-plus"></i> Agregar Competidor</a
               >
             </h4>
+            <form th:action="@{/listarCompetidores}" method="get">
+              <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Owner Name & Shop Type" size="50" >
+              <button type="submit" class="btn btn-info" >Search</button>
+              <button type="submit" class="btn btn-info" >Reset</button>
+              </form>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
               <thead class="text-white">

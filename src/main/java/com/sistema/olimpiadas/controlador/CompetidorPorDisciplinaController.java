@@ -30,12 +30,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class CompetidorPorDisciplinaController {
 
   @Autowired
   private CompetidorPorDisciplinaServicio competidorPorDisciplinaServicio;
+
+  private final Logger LOG = LoggerFactory.getLogger(CompetidorPorDisciplinaController.class);
 
   @GetMapping("/verCompetidores/{id}")
   public String verDetallesDelCompetidorPorDisciplina(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
@@ -149,14 +153,16 @@ public class CompetidorPorDisciplinaController {
     return "redirect:/listarCompetidores";
   }
 
-  @RequestMapping(path = {"/","search"})
-  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
+  @RequestMapping("/listarCompetidores")
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, @RequestParam String keyword){
     if(keyword!=null){
-      List<CompetidorPorDisciplina> lista = competidorPorDisciplinaServicio.getbyKeyword(keyword);
-      modelo.addAttribute("lista",lista);
+      List<CompetidorPorDisciplina> list = competidorPorDisciplinaServicio.getbyKeyword(keyword);
+      modelo.addAttribute("list",list);
+      LOG.info("Busqueda");
     }else{
-      List<CompetidorPorDisciplina> lista=competidorPorDisciplinaServicio.visualizarCompetidores();
-      modelo.addAttribute("lista",lista);
+      List<CompetidorPorDisciplina> list=competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("list",list);
+     LOG.info("Pase");
     }
     return "listarCompetidores";
   }
