@@ -19,7 +19,7 @@
                 <input type="hidden" th:field="*{id}" />
               </div>
 
-              <button type="submit" class="btn btn-success">Registrar</button>
+              <button type="submit" class="btn btn-success" sec:authorize="hasRole('ADMIN')">Registrar</button>
               <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarDisciplinas'">Cancelar</a>
             </form>
           </div>
