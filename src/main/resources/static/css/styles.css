@@ -149,6 +149,11 @@ body {
   text-decoration: none;
 }
 
+.userorange {
+  color: #ff7500;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 480px) {
   .social-panel-container.visible {
     transform: translateX(0px);
@@ -236,4 +241,85 @@ body {
   float: left;
   padding: 10px;
   /* border: 2px solid green; */
+}
+
+main {
+  width: 100%;
+  margin: auto;
+  /* border: 3px solid grey; */
+  display: grid;
+  color: black;
+  grid-template-rows: 60px 100px 100px 60px;
+  grid-template-columns: repeat(3, 1fr) 150px;
+  grid-gap: 20px;
+}
+
+.div5 {
+  background-color: #001f6137;
+  grid-row: 1/4;
+  grid-column: 4/3;
+  margin-left: 60px;
+  margin-right: -150px;
+  border-radius: 14px;
+}
+.div6 {
+  background-color: #ffffff;
+  border-radius: 10px;
+  grid-column: 1/ 3;
+  grid-row: 1/5;
+}
+
+.bg-c-jueces {
+  background: #001f61;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.bg-c-disciplinas {
+  background: #26595f;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.bg-c-entrenadores {
+  background: #57265f;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.bg-c-competidores {
+  background: #5f2626;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.bg-c-comentario {
+  background: #ac5821;
+  color: #ffffff;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card .card-block {
+  padding: auto;
+}
+
+.center {
+  text-align: center;
+  color: #ffffff;
+}
+
+.registrostitle {
+  background-color: #001f61;
+  border: 1px solid #001f61;
+  box-shadow: 0 16px 22px -17px #03153b;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 12px 20px;
+  bottom: 20px;
 }
