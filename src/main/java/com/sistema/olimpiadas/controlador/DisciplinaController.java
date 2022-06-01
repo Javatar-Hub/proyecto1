@@ -71,7 +71,7 @@ public class DisciplinaController {
     if (id > 0) {
       disciplina = disciplinaServicio.findOne(id);
       if (disciplina == null) {
-        flash.addFlashAttribute("error", "El ID del juez no existe en la base de datos");
+        flash.addFlashAttribute("error", "El ID de la disciplina no existe en la base de datos");
         return "redirect:/listarDisciplinas";
       }
     } else {

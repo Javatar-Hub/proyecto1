@@ -48,4 +48,10 @@ public class CompetidorPorDisciplinaImpl implements CompetidorPorDisciplinaServi
 
   }
 
+
+  @Transactional
+  public List<CompetidorPorDisciplina> getbyKeyword(String keyword){
+    return competidorPorDisciplinaRepository.findByKeyword(keyword);
+  }
+
 }
