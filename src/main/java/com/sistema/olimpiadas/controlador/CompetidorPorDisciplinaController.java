@@ -25,6 +25,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
@@ -148,5 +149,16 @@ public class CompetidorPorDisciplinaController {
     return "redirect:/listarCompetidores";
   }
 
+  @RequestMapping(path = {"/","search"})
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
+    if(keyword!=null){
+      List<CompetidorPorDisciplina> lista = competidorPorDisciplinaServicio.getbyKeyword(keyword);
+      modelo.addAttribute("lista",lista);
+    }else{
+      List<CompetidorPorDisciplina> lista=competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("lista",lista);
+    }
+    return "listarCompetidores";
+  }
 
 }

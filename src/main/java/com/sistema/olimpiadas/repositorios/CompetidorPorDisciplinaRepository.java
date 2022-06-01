@@ -11,4 +11,7 @@ import java.util.*;
 @Repository
 public interface CompetidorPorDisciplinaRepository extends JpaRepository<CompetidorPorDisciplina, Long> {
 
+    @Query(value = "SELECT * FROM competidores WHERE competidores.nombre LIKE %:keyword% ", nativeQuery = true)
+    List<CompetidorPorDisciplina> findByKeyword(@Param("keyword") String keyword);
+
 }

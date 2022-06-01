@@ -18,5 +18,5 @@ public interface CompetidorPorDisciplinaServicio {
 
     public void eliminarCompetidorPorDisciplina(Long id);
 
-
+    public List<CompetidorPorDisciplina> getbyKeyword(String keyword);
 }
