@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="layout/layout :: head">
     <meta charset="utf-8" />
@@ -9,17 +20,18 @@
     <br />
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-          <h1 class="text-center" th:text="${titulo}"></h1>
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #001f61">
+          <br />
+          <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
           <div class="card-body">
             <form th:action="@{/form}" th:object="${juez}" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="nombre">Nombre</label>
+                <label for="nombre" style="color: #ffffff">Nombre:</label>
                 <input type="text" class="form-control" name="nombre" th:field="*{nombre}" placeholder="Escriba su Nombre" required />
               </div>
 
               <div class="form-group">
-                <label for="paterno">Apellido Paterno</label>
+                <label for="paterno" style="color: #ffffff">Apellido Paterno:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -31,7 +43,7 @@
               </div>
 
               <div class="form-group">
-                <label for="materno">Apellido Materno</label>
+                <label for="materno" style="color: #ffffff">Apellido Materno:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -43,7 +55,7 @@
               </div>
 
               <div class="form-group">
-                <label for="usuario">Nombre de Usuario</label>
+                <label for="usuario" style="color: #ffffff">Nombre de Usuario:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -55,7 +67,7 @@
               </div>
 
               <div class="form-group">
-                <label for="edad">Edad</label>
+                <label for="edad" style="color: #ffffff">Edad:</label>
                 <input
                   type="number"
                   min="18"
@@ -70,7 +82,7 @@
               </div>
 
               <div class="form-group">
-                <label for="password">Contraseña Temporal</label>
+                <label for="password" style="color: #ffffff">Contraseña Temporal:</label>
                 <input
                   type="password"
                   class="form-control"
@@ -81,7 +93,7 @@
                 />
               </div>
               <div class="form-group row">
-                <label class="col-form-label col-sm-4">Disciplina : </label>
+                <label class="col-form-label col-sm-4" style="color: #ffffff">Disciplina : </label>
                 <div class="col-sm-8">
                   <select th:field="*{disciplina}" class="form-control" required>
                     <th:block th:each="disciplina : ${disciplinas}">
@@ -90,7 +102,7 @@
                   </select>
                 </div>
               </div>
-              <label for="foto">Foto de perfil:</label>
+              <label for="foto" style="color: #ffffff">Foto de perfil:</label>
               <input class="form-control" name="file" type="file" id="foto" />
               <input type="hidden" th:field="*{id}" />
               <div class="box-footer">
