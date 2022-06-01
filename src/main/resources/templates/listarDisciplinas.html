@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="layout/layout :: head">
     <meta charset="UTF-8" />
@@ -8,17 +18,34 @@
   </head>
   <body>
     <header th:replace="layout/layout :: header"></header>
-    <div class="container">
+    <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="card bg-light">
-          <h4 class="card-header" th:text="${titulo}"></h4>
+        <div class="jumbotron text-white" style="background-color: #001f61">
+          <h1>
+            Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
+            ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
+          </h1>
+          <hr class="my-4" />
+          <h6 sec:authorize="hasRole('ADMIN')">
+            En este apartado podrá gestionar todo lo referente a las disciplinas, podrá registrar nuevas disciplinas, editar su información,
+            eliminarlas o ver mas detalles.
+          </h6>
+          <h6 sec:authorize="hasRole('USER')">En este apartado podrá consultar información detallada de las disciplinas registradas</h6>
+          <h6 sec:authorize="hasRole('ENTRENADOR')">
+            En este apartado podrá consultar información detallada de las disciplinas registradas
+          </h6>
+        </div>
+        <div class="card text-white" style="background-color: #ffffff2c">
+          <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
           <div class="card-body table-responsive">
             <h4 class="card-title">
-              <a th:href="@{/crear_disciplina}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')">Agregar disciplina</a>
+              <a th:href="@{/crear_disciplina}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"
+                ><i class="fa-solid fa-circle-plus"></i> Agregar disciplina</a
+              >
             </h4>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
-              <thead>
+              <thead class="text-white">
                 <tr>
                   <th>ID</th>
                   <th>Disciplina</th>
@@ -31,16 +58,22 @@
                 <tr th:each="disciplina : ${Disciplinas}">
                   <td th:text="${disciplina.id}">Nombre</td>
                   <td th:text="${disciplina.nombre}">Nombre</td>
-                  <td><a class="btn btn-info btn-sm" th:href="@{/verDisciplinas/} + ${disciplina.id}">Detalles</a></td>
+                  <td>
+                    <a class="btn btn-info btn-sm" th:href="@{/verDisciplinas/} + ${disciplina.id}"
+                      ><i class="fa-solid fa-circle-info"></i> Detalles</a
+                    >
+                  </td>
                   <td sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-warning btn-sm" th:href="@{/crear_disciplina/} + ${disciplina.id}">Editar</a>
+                    <a class="btn btn-warning btn-sm" th:href="@{/crear_disciplina/} + ${disciplina.id}"
+                      ><i class="fa-solid fa-pen-to-square"></i> Editar</a
+                    >
                   </td>
                   <td sec:authorize="hasRole('ADMIN')">
                     <a
                       class="btn btn-danger btn-sm"
                       th:href="@{/eliminaDis/} + ${disciplina.id}"
                       onclick="return confirm('¿Estás seguro de eliminar al empleado?');"
-                      >Eliminar</a
+                      ><i class="fa-solid fa-trash-can"></i> Eliminar</a
                     >
                   </td>
                 </tr>
@@ -51,6 +84,13 @@
         </div>
       </div>
     </div>
+
     <footer th:replace="layout/layout :: footer"></footer>
+    <div
+      class="floating-text-jueces"
+      style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+    >
+      <i class="fa-solid fa-gavel" style="color: #ff7500"></i> Gestion de Disciplinas
+    </div>
   </body>
 </html>

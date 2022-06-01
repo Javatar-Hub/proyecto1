@@ -212,7 +212,6 @@ body {
   background-color: #001f61;
   padding: 30px 0;
   width: 100%;
-
   border-radius: 0 0 30px 30px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   max-width: 100%;
@@ -220,7 +219,11 @@ body {
   max-height: 100vh;
   overflow: hidden;
   transition: 0.3s;
+  position: fixed;
+  top: 0;
+  z-index: 1030; /* to prevent the navbar getting covered up by other content */
 }
+
 .container {
   max-width: 80%;
   margin: 0 auto;
