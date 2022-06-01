@@ -222,7 +222,6 @@ body {
   transition: 0.3s;
 }
 .container {
-  background-color: white;
   max-width: 80%;
   margin: 0 auto;
   max-height: 100vh;
