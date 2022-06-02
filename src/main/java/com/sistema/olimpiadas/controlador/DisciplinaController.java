@@ -93,4 +93,17 @@ public class DisciplinaController {
     return "redirect:/listarDisciplinas";
   }
 
+  @GetMapping({ "/agregarComentario" })
+  public String agregarComentario(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
+    Pageable pageRequest = PageRequest.of(page, 10);
+    Page<Disciplina> disciplinas = disciplinaServicio.visualizarDisciplinas(pageRequest);
+    PageRender<Disciplina> pageRender = new PageRender<>("/listarDisciplinas", disciplinas);
+
+    modelo.addAttribute("titulo", "Listado de Disciplinas");
+    modelo.addAttribute("Disciplinas", disciplinas);
+    modelo.addAttribute("page", pageRender);
+
+    return "listarDisciplinas";
+  }
+
 }

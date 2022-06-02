@@ -1,13 +1,10 @@
 package com.sistema.olimpiadas.modelo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -23,15 +20,15 @@ public class ComentarioJuez {
     private String comentario;
 
     @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 140)
+    @Column(name = "Comentario", nullable = false, length = 50)
     private Disciplina disciplina;
 
     @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 140)
+    @Column(name = "Comentario", nullable = false, length = 50)
     private Juez juez;
 
     @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 140)
+    @Column(name = "Comentario", nullable = false, length = 50)
     private CompetidorPorDisciplina competidor;
 
     public ComentarioJuez(Long id, @NotEmpty String comentario, @NotEmpty Disciplina disciplina, @NotEmpty Juez juez,
