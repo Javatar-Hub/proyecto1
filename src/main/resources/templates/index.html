@@ -1,0 +1,371 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+</style>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+<html xmlns:th="http://www.thymeleaf.org">
+  <title>Admin Links</title>
+
+  <body>
+    <h1 class="Titulo app-header" sec:authorize="hasRole('ADMIN')">Dashboard de Administrador</h1>
+    <h1 class="Titulo app-header" sec:authorize="hasRole('USER')">Dashboard de Jueces</h1>
+
+    <h1 class="Titulo app-header" sec:authorize="hasRole('ENTRENADOR')">Dashboard de Entrenadores</h1>
+
+    <h1 class="Titulo app-header" sec:authorize="hasRole('COMPETIDOR')">Dashboard de Competidores</h1>
+    <div class="float-container">
+      <a class="link" href="/listar">
+        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+          <div class="course">
+            <div class="jueces-color">
+              <br />
+              <h1><i class="fa-solid fa-gavel"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Gestion</h6>
+              <h3>Gestion jueces</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="listarDisciplinas">
+        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+          <div class="course">
+            <div class="disciplinas-color">
+              <br />
+              <h1><i class="fa-solid fa-basketball"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Gestion</h6>
+              <h3>Gestion disciplinas</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+          <div class="course">
+            <div class="entrenadores-color">
+              <br />
+              <h1><i class="fa-solid fa-people-group"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Consulta</h6>
+              <h3>Consultar entrenadores</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="listarCompetidores">
+        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+          <div class="course">
+            <div class="competidores-color">
+              <br />
+              <h1><i class="fa-solid fa-medal"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Consulta</h6>
+              <h3>Consultar competidores</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('USER')">
+          <div class="course">
+            <div class="calificar-color">
+              <br />
+              <h1><i class="fa-solid fa-marker"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Calificar</h6>
+              <h3>Calificar competidores</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('USER')">
+          <div class="course">
+            <div class="comentario-color">
+              <br />
+              <h1><i class="fa-solid fa-comments"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Comentarios</h6>
+              <h3>Agregar comentarios</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('COMPETIDOR')">
+          <div class="course">
+            <div class="comentario-color">
+              <br />
+              <h1><i class="fa-solid fa-comments"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Comentarios</h6>
+              <h3>Consultar comentarios</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('COMPETIDOR')">
+          <div class="course">
+            <div class="calificar-color">
+              <br />
+              <h1><i class="fa-solid fa-marker"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Calificaciones</h6>
+              <h3>Consultar califiaciones</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="/listarCompetidores">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('ENTRENADOR') ">
+          <div class="course">
+            <div class="competidores-color">
+              <br />
+              <h1><i class="fa-solid fa-medal"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Gestion</h6>
+              <h3>Gestion de competidores</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="link" href="#">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('ENTRENADOR')">
+          <div class="course">
+            <div class="calificar-color">
+              <br />
+              <h1><i class="fa-solid fa-marker"></i></h1>
+            </div>
+            <div class="course-info">
+              <div class="progress-container"></div>
+              <h6>Calificaciones</h6>
+              <h3>Consultar califiaciones</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <br />
+
+    <div class="float-container">
+      <main>
+        <div class="div5">
+          <h3 class="center registrostitle">Relación <i class="fa-solid fa-book-bookmark"></i></h3>
+          <br />
+          <div class="row">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+              <div class="card bg-c-jueces order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de jueces</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-gavel"></i><span>10</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+              <div class="card bg-c-disciplinas order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de disciplinas</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-basketball"></i><span>20</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+              <div class="card bg-c-entrenadores order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de entrenadores</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-people-group"></i><span>12</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+              <div class="card bg-c-competidores order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de competidores</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ENTRENADOR')">
+              <div class="card bg-c-competidores order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de competidores</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ENTRENADOR')">
+              <div class="card bg-c-jueces order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de calificaciones</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-marker"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('COMPETIDOR')">
+              <div class="card bg-c-jueces order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de calificaciones</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-marker"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('USER')">
+              <div class="card bg-c-jueces order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de calificaciones</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-marker"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('USER')">
+              <div class="card bg-c-comentario order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de comentarios</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-comments"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('COMPETIDOR')">
+              <div class="card bg-c-comentario order-card">
+                <div class="card-block center">
+                  <h6 class="m-b-20">Total de comentarios</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-comments"></i><span>30</span></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="div6 table-responsive">
+          <h3>Tabla de posiciones 🥇🥈🥉</h3>
+          <table class="table table-striped table-light table-responsive">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
+  <form class="d-flex" th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+    <input type="submit" class="floating-btn" value="Cerrar sesión" />
+  </form>
+
+  <!-- SOCIAL PANEL HTML -->
+
+  <div class="floating-text">
+    <i class="fa-solid fa-hand-peace"></i> Bienvenido <a class="userorange"> [[${#httpServletRequest.remoteUser}]]</a>
+  </div>
+</html>

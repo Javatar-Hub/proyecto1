@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout/layout :: head">
+    <meta charset="utf-8" />
+    <title>Crear Competidor</title>
+  </head>
+  <body>
+    <header th:replace="layout/layout :: header"></header>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #001f61">
+          <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
+          <div class="card-body">
+            <form th:action="@{/crear_competidor}" th:object="${competidorPorDisciplina}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="nombre" style="color: #ffffff">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nombre"
+                  th:field="*{nombre}"
+                  placeholder="Escriba su Nombre  del competidor"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="paterno" style="color: #ffffff">Apellido Paterno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="paterno"
+                  th:field="*{paterno}"
+                  placeholder="Escriba su Apellido paterno del competidor"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="materno" style="color: #ffffff">Apellido Materno</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="materno"
+                  th:field="*{materno}"
+                  placeholder="Escriba su Apellido materno  del competidor"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="usuario" style="color: #ffffff">Nombre de Usuario</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="usuario"
+                  th:field="*{usuario}"
+                  placeholder="Escriba el nombre de Usuario"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="edad" style="color: #ffffff">Edad</label>
+                <input
+                  type="number"
+                  min="18"
+                  max="99"
+                  value="18"
+                  class="form-control"
+                  name="edad"
+                  th:field="*{edad}"
+                  placeholder="Escriba la edad del Competidor"
+                  required
+                />
+              </div>
+
+              <div class="form-group row">
+                <label class="col-form-label col-sm-4" style="color: #ffffff">Disciplina : </label>
+                <div class="col-sm-8">
+                  <select th:field="*{disciplina}" class="form-control" required>
+                    <th:block th:each="disciplina : ${disciplinas}">
+                      <option th:text="${disciplina.nombre}" th:value="${disciplina.id}"></option>
+                    </th:block>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label style="color: #ffffff">Planteles : </label>
+                <select class="form-control" th:field="*{plantel}">
+                  <option th:value="FacultaddeArquitectura">Facultad de Arquitectura</option>
+                  <option th:value="FacultaddeArtesyDiseño">Facultad de Artes y Diseño</option>
+                  <option th:value="Facultad_de_Ciencias">Facultad de Ciencias</option>
+                  <option th:value="FacultaddeCienciasPolíticasySociales">Facultad de Ciencias Políticas y Sociales</option>
+                  <option th:value="FacultaddeContaduríayAdministración">Facultad de Contaduría y Administración</option>
+                  <option th:value="FacultaddeDerecho">Facultad de Derecho</option>
+                  <option th:value="FacultaddeEconomia">Facultad de Economía</option>
+                  <option th:value="FacultaddeEstudiosSuperioresAcatlan">Facultad de Estudios Superiores (FES) Acatlán</option>
+                  <option th:value="FacultaddeEstudiosSuperioresAragon">Facultad de Estudios Superiores (FES) Aragón</option>
+                  <option th:value="FacultaddeEstudiosSuperioresCuautitlan">Facultad de Estudios Superiores (FES) Cuautitlán</option>
+                  <option th:value="FacultaddeEstudiosSuperioresIztacala">Facultad de Estudios Superiores (FES) Iztacala</option>
+                  <option th:value="FacultaddeEstudiosSuperioresZaragoza">Facultad de Estudios Superiores (FES) Zaragoza</option>
+                  <option th:value="FacultaddeFilosofiayLetras">Facultad de Filosofía y Letras</option>
+                  <option th:value="FacultaddeIngenieria">Facultad de Ingeniería</option>
+                  <option th:value="FacultaddeMedicina">Facultad e Medicina</option>
+                  <option th:value="FacultaddeMedicinaVeterinariayZootecnia">Facultad de Medicina Veterinaria y Zootecnia</option>
+                  <option th:value="FacultaddeMusica">Facultad de Música</option>
+                  <option th:value="FacultaddeOdontologia">Facultad de Odontología</option>
+                  <option th:value="FacultaddePsicologia">Facultad de Psicología</option>
+                  <option th:value="FacultaddeQuimica">Facultad de Química</option>
+                </select>
+              </div>
+
+              <label for="foto" style="color: #ffffff">Foto de perfil:</label>
+              <input class="form-control" name="file" type="file" id="foto" />
+              <input type="hidden" th:field="*{id}" />
+              <div class="box-footer">
+                <br />
+
+                <button type="submit" class="btn btn-success">Registrar</button>
+                <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarCompetidores'">Cancelar</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </body>
+</html>
