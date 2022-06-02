@@ -38,6 +38,8 @@ public class JuezController {
   @Autowired
   private JuezServicio juezServicio;
 
+  
+
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index() {
     return "index";
