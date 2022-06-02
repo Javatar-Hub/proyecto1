@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <link rel="stylesheet" href="/css/styles.css" />
 <html xmlns:th="http://www.thymeleaf.org">
-  <title>Admin Links</title>
+  <title>Dasboard</title>
 
   <body>
     <h1 class="Titulo app-header" sec:authorize="hasRole('ADMIN')">Dashboard de Administrador</h1>
@@ -22,6 +22,21 @@
 
     <h1 class="Titulo app-header" sec:authorize="hasRole('COMPETIDOR')">Dashboard de Competidores</h1>
     <div class="float-container">
+      <div class="jumbotron jumbotronimg text-white" style="background-color: #001f61">
+        <h1 class="display-4 texttotal font-weight-bold" th:text="${totalReportedCases}"></h1>
+        <h1 style="color: #ff7500" class="titlepage">Prometeo <i class="fa-solid fa-fire" style="color: #ff7500"></i></h1>
+        <h4>Bienvenido a tu nuevo dashboard</h4>
+        <hr class="my-3" />
+        <p class="center">
+          Desplácese hacia abajo para ver enlaces rápidos y descripciones generales de su servidor, Tabla de posiciones y la relacion
+          general de prometo.
+        </p>
+        <p>
+          Desarrollado con ❤️ por
+          <a href="https://github.com/VictorDeGallegos"><span class="label label-danger">Javatar</span></a>
+        </p>
+      </div>
+      <br />
       <a class="link" href="/listar">
         <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
           <div class="course">
