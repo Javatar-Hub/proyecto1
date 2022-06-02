@@ -42,7 +42,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .roles("ENTRENADOR")
         .build();
 
-    return new InMemoryUserDetailsManager(usuario1, usuario2, usuario3);
+    UserDetails usuario4 = User
+        .withUsername("Competidor1")
+        .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
+        .roles("COMPETIDOR")
+        .build();
+
+    return new InMemoryUserDetailsManager(usuario1, usuario2, usuario3, usuario4);
   }
 
   @Override
