@@ -6,8 +6,6 @@ import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.CompetidorPorDisciplinaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,15 +17,11 @@ public class CompetidorPorDisciplinaImpl implements CompetidorPorDisciplinaServi
 
   @Override
   @Transactional(readOnly = true)
-  public List<CompetidorPorDisciplina> visualizarCompetidores() {
-    return (List<CompetidorPorDisciplina>) competidorPorDisciplinaRepository.findAll();
-  }
+   public List<CompetidorPorDisciplina> visualizarCompetidores(){
+  List<CompetidorPorDisciplina> list =  (List<CompetidorPorDisciplina>)competidorPorDisciplinaRepository.findAll();
+  return list;
+ }
 
-  @Override
-  @Transactional(readOnly = true)
-  public Page<CompetidorPorDisciplina> visualizarCompetidores(Pageable pageable) {
-    return competidorPorDisciplinaRepository.findAll(pageable);
-  }
 
   @Override
   @Transactional

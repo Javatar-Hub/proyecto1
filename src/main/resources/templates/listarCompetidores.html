@@ -43,9 +43,9 @@
               >
             </h4>
             <form th:action="@{/listarCompetidores}" method="get">
-              <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Owner Name & Shop Type" size="50" >
-              <button type="submit" class="btn btn-info" >Search</button>
-              <button type="submit" class="btn btn-info" >Reset</button>
+              <input type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por nombre y apellido" size="50" >
+              <button type="submit" class="btn btn-info" >Buscar</button>
+              <button type="submit" class="btn btn-info" >Reiniciar</button>
               </form>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
@@ -97,7 +97,6 @@
                 </tr>
               </tbody>
             </table>
-            <nav th:replace="paginator-nav :: paginator"></nav>
           </div>
         </div>
       </div>

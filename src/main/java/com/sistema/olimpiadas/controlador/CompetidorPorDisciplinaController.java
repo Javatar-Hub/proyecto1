@@ -13,12 +13,9 @@ import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
-import com.sistema.olimpiadas.util.paginacion.PageRender;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,16 +52,19 @@ public class CompetidorPorDisciplinaController {
     return "verCompetidores";
   }
 
-  @GetMapping({ "/listarCompetidores" })
-  public String listarCompetidores(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
-    Pageable pageRequest = PageRequest.of(page, 10);
-    Page<CompetidorPorDisciplina> competidores = competidorPorDisciplinaServicio.visualizarCompetidores(pageRequest);
-    PageRender<CompetidorPorDisciplina> pageRender = new PageRender<>("/listarCompetidores", competidores);
 
-    modelo.addAttribute("titulo", "Listado de competidores");
-    modelo.addAttribute("competidores", competidores);
-    modelo.addAttribute("page", pageRender);
-
+  @RequestMapping("/listarCompetidores")
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
+    if(keyword!=null){
+      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.getbyKeyword(keyword);
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+      LOG.info("Busqueda");
+    }else{
+      List<CompetidorPorDisciplina> competidorPorDisciplina=competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+     LOG.info("Pase");
+    }
+    modelo.addAttribute("titulo", "Listado de Competidores");
     return "listarCompetidores";
   }
 
@@ -153,18 +153,6 @@ public class CompetidorPorDisciplinaController {
     return "redirect:/listarCompetidores";
   }
 
-  @RequestMapping("/listarCompetidores")
-  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, @RequestParam String keyword){
-    if(keyword!=null){
-      List<CompetidorPorDisciplina> list = competidorPorDisciplinaServicio.getbyKeyword(keyword);
-      modelo.addAttribute("list",list);
-      LOG.info("Busqueda");
-    }else{
-      List<CompetidorPorDisciplina> list=competidorPorDisciplinaServicio.visualizarCompetidores();
-      modelo.addAttribute("list",list);
-     LOG.info("Pase");
-    }
-    return "listarCompetidores";
-  }
+  
 
 }
