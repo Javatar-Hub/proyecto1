@@ -42,11 +42,18 @@
                 ><i class="fa-solid fa-circle-plus"></i> Agregar Competidor</a
               >
             </h4>
-            <form th:action="@{/listarCompetidores}" method="get">
-              <input type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por nombre y apellido" size="50" >
-              <button type="submit" class="btn btn-info" >Buscar</button>
-              <button type="submit" class="btn btn-info" >Reiniciar</button>
-              </form>
+            <form class="input-group" th:action="@{/listarCompetidores}" method="get">
+              <input
+                type="text"
+                class="form-control"
+                name="keyword"
+                th:value="${keyword}"
+                placeholder="Busqueda por nombre ó apellido"
+                size="50"
+              />
+              <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+              <button type="submit" class="btn btn-light"><i class="fa-solid fa-rotate-right"></i></button>
+            </form>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
               <thead class="text-white">
