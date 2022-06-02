@@ -9,9 +9,19 @@ body {
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
+  background-size: 100%;
   margin: 0;
 }
 
+.jumbotronimg {
+  background-image: url('../images/fondoprome.png');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .courses-container {
 }
 
@@ -185,7 +195,7 @@ body {
 
 .Titulo {
   display: block;
-  font-size: 45px;
+  font-size: 40px;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
   margin-inline-start: 0px;
@@ -350,4 +360,9 @@ main {
   line-height: 20px;
   padding: 12px 20px;
   bottom: 20px;
+}
+
+.titlepage {
+  font-weight: bold;
+  font-size: 70px;
 }
