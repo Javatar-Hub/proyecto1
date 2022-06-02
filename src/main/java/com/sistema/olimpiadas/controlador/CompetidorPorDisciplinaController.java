@@ -13,12 +13,9 @@ import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
-import com.sistema.olimpiadas.util.paginacion.PageRender;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,12 +27,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class CompetidorPorDisciplinaController {
 
   @Autowired
   private CompetidorPorDisciplinaServicio competidorPorDisciplinaServicio;
+
+  private final Logger LOG = LoggerFactory.getLogger(CompetidorPorDisciplinaController.class);
 
   @GetMapping("/verCompetidores/{id}")
   public String verDetallesDelCompetidorPorDisciplina(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
@@ -51,16 +52,19 @@ public class CompetidorPorDisciplinaController {
     return "verCompetidores";
   }
 
-  @GetMapping({ "/listarCompetidores" })
-  public String listarCompetidores(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
-    Pageable pageRequest = PageRequest.of(page, 10);
-    Page<CompetidorPorDisciplina> competidores = competidorPorDisciplinaServicio.visualizarCompetidores(pageRequest);
-    PageRender<CompetidorPorDisciplina> pageRender = new PageRender<>("/listarCompetidores", competidores);
 
-    modelo.addAttribute("titulo", "Listado de competidores");
-    modelo.addAttribute("competidores", competidores);
-    modelo.addAttribute("page", pageRender);
-
+  @RequestMapping("/listarCompetidores")
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
+    if(keyword!=null){
+      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.getbyKeyword(keyword);
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+      LOG.info("Busqueda");
+    }else{
+      List<CompetidorPorDisciplina> competidorPorDisciplina=competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+     LOG.info("Pase");
+    }
+    modelo.addAttribute("titulo", "Listado de Competidores");
     return "listarCompetidores";
   }
 
@@ -149,16 +153,6 @@ public class CompetidorPorDisciplinaController {
     return "redirect:/listarCompetidores";
   }
 
-  @RequestMapping(path = {"/","search"})
-  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
-    if(keyword!=null){
-      List<CompetidorPorDisciplina> lista = competidorPorDisciplinaServicio.getbyKeyword(keyword);
-      modelo.addAttribute("lista",lista);
-    }else{
-      List<CompetidorPorDisciplina> lista=competidorPorDisciplinaServicio.visualizarCompetidores();
-      modelo.addAttribute("lista",lista);
-    }
-    return "listarCompetidores";
-  }
+  
 
 }
