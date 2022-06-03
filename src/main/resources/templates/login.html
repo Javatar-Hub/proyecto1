@@ -11,13 +11,40 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <style>
+      .main {
+        border: 3px solid #ff7500;
+      }
+      body {
+        background-image: linear-gradient(45deg, #001f61, #9790f2);
+      }
+      .divider:after,
+      .divider:before {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #eee;
+      }
+      .h-custom {
+        height: calc(100% - 73px);
+      }
+      @media (max-width: 450px) {
+        .h-custom {
+          height: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header th:fragment="header"></header>
     <section class="vh-100">
-      <div class="container py-5 h-100">
+      <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://i.ibb.co/gt5Wzw1/maciphoneprome.png" class="img-fluid" alt="Sample image" />
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card shadow-2-strong" style="border-radius: 1rem">
               <div class="card-body p-5 text-center">
                 <img
@@ -25,6 +52,7 @@
                   width="100"
                   alt="Prometeo"
                 />
+                <span>| Prometeo <i class="fa-solid fa-fire" style="color: #ff7500"></i></span>
                 <h3 class="mb-5">Inicio de sesión</h3>
                 <div th:if="${param.error}">
                   <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -53,6 +81,10 @@
                   </div>
 
                   <button class="btn btn-primary btn-lg btn-block" type="submit">Iniciar sesión</button>
+                  <script type="module">
+                    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+                    confetti();
+                  </script>
                 </form>
 
                 <hr class="my-4" />
@@ -64,6 +96,22 @@
             </div>
           </div>
         </div>
+      </div>
+      <div
+        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5"
+        style="background-color: #001f6140"
+      >
+        <!-- Copyright -->
+        <div class="text-white mb-3 mb-md-0">Copyright © 2022. Todos los derechos reservados Javatar.</div>
+        <!-- Copyright -->
+
+        <!-- Right -->
+        <div>
+          <a href="https://github.com/Javatar-Hub" class="text-white me-4">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+        <!-- Right -->
       </div>
     </section>
 

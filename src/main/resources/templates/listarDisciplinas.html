@@ -20,7 +20,7 @@
     <header th:replace="layout/layout :: header"></header>
     <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="jumbotron text-white" style="background-color: #001f61">
+        <div class="jumbotron text-white jumbotronimglistas" style="background-color: #001f61">
           <h1>
             Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
@@ -47,7 +47,7 @@
             <table class="table table-striped">
               <thead class="text-white">
                 <tr>
-                  <th>ID</th>
+                  <th>#</th>
                   <th>Disciplina</th>
                   <th>Detalles</th>
                   <th sec:authorize="hasRole('ADMIN')">Editar</th>
