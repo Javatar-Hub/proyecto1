@@ -20,13 +20,13 @@ import com.sistema.olimpiadas.modelo.Rol;
 import com.sistema.olimpiadas.modelo.Usuario;
 
 @Service
-public class EntrenadorServicioImpl implements EntrenadorServicio{
+public class EntrenadorServicioImpl implements EntrenadorServicio {
 
-    private EntrenadorRepository entrenadorRepository;
+	private EntrenadorRepository entrenadorRepository;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	public EntrenadorServicioImpl(EntrenadorRepository entrenadorRepository) {
 		super();
 		this.entrenadorRepository = entrenadorRepository;
@@ -34,28 +34,29 @@ public class EntrenadorServicioImpl implements EntrenadorServicio{
 
 	@Override
 	public Usuario guardar(EntrenadorRegistroDTO registroDTO) {
-		Usuario usuario = new Usuario(registroDTO.getNombre(), 
-				registroDTO.getApellidoPaterno(),registroDTO.getApellidoMaterno(),registroDTO.getEdad(),registroDTO.getEmail(),
-				passwordEncoder.encode(registroDTO.getPassword()),Arrays.asList(new Rol("ENTRENADOR")));
+		Usuario usuario = new Usuario(registroDTO.getNombre(),
+				registroDTO.getApellidoPaterno(), registroDTO.getApellidoMaterno(), registroDTO.getEdad(),
+				registroDTO.getEmail(),
+				passwordEncoder.encode(registroDTO.getPassword()), Arrays.asList(new Rol("ENTRENADOR")));
 		return entrenadorRepository.save(usuario);
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = entrenadorRepository.findByEmail(username);
-		if(usuario == null) {
+		if (usuario == null) {
 			throw new UsernameNotFoundException("Usuario o password inválidos");
 		}
-		return new User(usuario.getEmail(),usuario.getPassword(), mapearAutoridadesRoles(usuario.getRoles()));
+		return new User(usuario.getEmail(), usuario.getPassword(), mapearAutoridadesRoles(usuario.getRoles()));
 	}
 
-	private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles){
+	private Collection<? extends GrantedAuthority> mapearAutoridadesRoles(Collection<Rol> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
 	}
-	
+
 	@Override
 	public List<Usuario> listarUsuarios() {
 		return entrenadorRepository.findAll();
 	}
-    
+
 }

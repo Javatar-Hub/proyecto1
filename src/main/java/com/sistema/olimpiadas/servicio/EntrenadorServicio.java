@@ -10,6 +10,6 @@ import com.sistema.olimpiadas.modelo.Usuario;
 public interface EntrenadorServicio extends UserDetailsService {
 
     public Usuario guardar(EntrenadorRegistroDTO registroDTO);
-	
-	public List<Usuario> listarUsuarios();
+
+    public List<Usuario> listarUsuarios();
 }

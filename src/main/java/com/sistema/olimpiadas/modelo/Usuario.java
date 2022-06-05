@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
-    @Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -28,21 +28,17 @@ public class Usuario {
 	@Column(name = "apellidoPaterno")
 	private String apellidoPaterno;
 
-    @Column(name = "apellidoMaterno")
+	@Column(name = "apellidoMaterno")
 	private String apellidoMaterno;
 
 	private String email;
 
 	private String password;
-	
-    private int edad;
 
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "usuarios_roles",
-			joinColumns = @JoinColumn(name = "usuario_id",referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "rol_id",referencedColumnName = "id")
-			)
+	private int edad;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id"))
 	private Collection<Rol> roles;
 
 	public Long getId() {
@@ -69,7 +65,6 @@ public class Usuario {
 		this.apellidoPaterno = apellidoPaterno;
 	}
 
-    
 	public String getApellidoMaterno() {
 		return apellidoMaterno;
 	}
@@ -78,7 +73,6 @@ public class Usuario {
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
-    
 	public int getEdad() {
 		return edad;
 	}
@@ -111,30 +105,32 @@ public class Usuario {
 		this.roles = roles;
 	}
 
-	public Usuario(Long id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email, String password, Collection<Rol> roles) {
+	public Usuario(Long id, String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email,
+			String password, Collection<Rol> roles) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.edad = edad;
+		this.apellidoMaterno = apellidoMaterno;
+		this.edad = edad;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
 	}
 
-	public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email, String password, Collection<Rol> roles) {
+	public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email,
+			String password, Collection<Rol> roles) {
 		super();
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.edad = edad;
+		this.apellidoMaterno = apellidoMaterno;
+		this.edad = edad;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
 	}
 
 	public Usuario() {
-		
-	}    
+
+	}
 }

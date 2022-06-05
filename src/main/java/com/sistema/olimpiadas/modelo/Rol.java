@@ -1,6 +1,5 @@
 package com.sistema.olimpiadas.modelo;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rol")
 public class Rol {
-    @Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
@@ -38,7 +37,7 @@ public class Rol {
 	}
 
 	public Rol() {
-		
+
 	}
 
 	public Rol(String nombre) {
@@ -46,5 +45,4 @@ public class Rol {
 		this.nombre = nombre;
 	}
 
-	
 }

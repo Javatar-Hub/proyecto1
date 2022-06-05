@@ -1,14 +1,13 @@
 package com.sistema.olimpiadas.controlador.dto;
 
 public class EntrenadorRegistroDTO {
-    private Long id;
+	private Long id;
 	private String nombre;
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private int edad;
 	private String email;
 	private String password;
-
 
 	public Long getId() {
 		return id;
@@ -34,11 +33,11 @@ public class EntrenadorRegistroDTO {
 		this.apellidoPaterno = apellidoPaterno;
 	}
 
-	public String getApellidoMaterno() { //New
+	public String getApellidoMaterno() { // New
 		return apellidoMaterno;
 	}
-	
-	public void setApellidoMarterno(String apellidoMaterno) { //New
+
+	public void setApellidoMarterno(String apellidoMaterno) { // New
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
@@ -66,8 +65,8 @@ public class EntrenadorRegistroDTO {
 		this.password = password;
 	}
 
-
-	public EntrenadorRegistroDTO (String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email, String password) {
+	public EntrenadorRegistroDTO(String nombre, String apellidoPaterno, String apellidoMaterno, int edad, String email,
+			String password) {
 		super();
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;

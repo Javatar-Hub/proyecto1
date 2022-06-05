@@ -12,14 +12,14 @@ import com.sistema.olimpiadas.servicio.EntrenadorServicio;
 @Controller
 @RequestMapping("/registro")
 public class RegistroEntrenadorController {
-    
-    private EntrenadorServicio entrenadorServicio;
+
+	private EntrenadorServicio entrenadorServicio;
 
 	public RegistroEntrenadorController(EntrenadorServicio entrenadorServicio) {
 		super();
 		this.entrenadorServicio = entrenadorServicio;
 	}
-	
+
 	@ModelAttribute("usuario")
 	public EntrenadorRegistroDTO retornarNuevoEntrenadorRegistroDTO() {
 		return new EntrenadorRegistroDTO();
@@ -29,7 +29,7 @@ public class RegistroEntrenadorController {
 	public String mostrarFormularioDeRegistro() {
 		return "registro";
 	}
-	
+
 	@PostMapping
 	public String registrarCuentaDeEntrenador(@ModelAttribute("usuario") EntrenadorRegistroDTO registroDTO) {
 		entrenadorServicio.guardar(registroDTO);

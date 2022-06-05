@@ -9,14 +9,14 @@ import com.sistema.olimpiadas.servicio.EntrenadorServicio;
 
 @Controller
 public class RegistroController {
-    @Autowired
+	@Autowired
 	private EntrenadorServicio servicio;
-	
+
 	@GetMapping("/login")
 	public String iniciarSesion() {
 		return "login";
 	}
-	
+
 	@GetMapping("/")
 	public String verPaginaDeInicio(Model modelo) {
 		modelo.addAttribute("usuarios", servicio.listarUsuarios());
