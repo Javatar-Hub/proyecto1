@@ -8,7 +8,10 @@
 />
 <link rel="stylesheet" href="/css/styles.css" />
 <!-- FontAwesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+/>
 <link rel="stylesheet" href="/css/styles.css" />
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="layout/layout :: head">
@@ -21,25 +24,46 @@
     <header th:replace="layout/layout :: header"></header>
     <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="jumbotron text-white jumbotronimglistas" style="background-color: #001f61">
+        <div
+          class="jumbotron text-white jumbotronimglistas"
+          style="background-color: #001f61"
+        >
           <h1>
-            Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
-            ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
+            Bienvenido
+            <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
+            ><img
+              src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif"
+              width="30px"
+            />
           </h1>
           <hr class="my-4" />
           <h6 sec:authorize="hasRole('ADMIN')">
-            En este apartado podrá gestionar todo lo referente a los jueces, podrá registrar nuevos jueces, editar su información,
-            eliminarlos o ver mas detalles.
+            En este apartado podrá gestionar todo lo referente a los jueces,
+            podrá registrar nuevos jueces, editar su información, eliminarlos o
+            ver mas detalles.
           </h6>
-          <h6 sec:authorize="hasRole('USER')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
-          <h6 sec:authorize="hasRole('ENTRENADOR')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
+          <h6 sec:authorize="hasRole('USER')">
+            En este apartado podrá consultar información detallada de los jueces
+            registrados
+          </h6>
+          <h6 sec:authorize="hasRole('ENTRENADOR')">
+            En este apartado podrá consultar información detallada de los jueces
+            registrados
+          </h6>
         </div>
         <div class="card text-white" style="background-color: #ffffff2c">
-          <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
+          <h4
+            class="card-header text-white"
+            style="background-color: #001f61"
+            th:text="${titulo}"
+          ></h4>
 
           <div class="card-body table-responsive">
             <h4 class="card-title">
-              <a th:href="@{/form}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"
+              <a
+                th:href="@{/form}"
+                class="btn btn-primary"
+                sec:authorize="hasRole('ADMIN')"
                 ><i class="fa-solid fa-circle-plus"></i> Agregar juez</a
               >
             </h4>
@@ -71,10 +95,18 @@
                   <td th:text="${juez.edad}">Edad</td>
                   <td th:text="${juez.foto}">Foto</td>
                   <td>
-                    <a class="btn btn-info btn-sm" th:href="@{/ver/} + ${juez.id}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+                    <a
+                      class="btn btn-info btn-sm"
+                      th:href="@{/ver/} + ${juez.id}"
+                      ><i class="fa-solid fa-circle-info"></i> Detalles</a
+                    >
                   </td>
                   <td sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-warning btn-sm" th:href="@{/form/} + ${juez.id}"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                    <a
+                      class="btn btn-warning btn-sm"
+                      th:href="@{/form/} + ${juez.id}"
+                      ><i class="fa-solid fa-pen-to-square"></i> Editar</a
+                    >
                   </td>
                   <td sec:authorize="hasRole('ADMIN')">
                     <a
@@ -95,7 +127,9 @@
     <footer th:replace="layout/layout :: footer"></footer>
     <div
       class="floating-text-jueces"
-      style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+      style="
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+          'Lucida Sans', Arial, sans-serif;"
     >
       <i class="fa-solid fa-gavel" style="color: #ff7500"></i> Gestion de Jueces
     </div>
