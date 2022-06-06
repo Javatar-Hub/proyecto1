@@ -1,6 +1,8 @@
 package com.sistema.olimpiadas.controlador;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,5 +36,19 @@ public class RegistroEntrenadorController {
 	public String registrarCuentaDeEntrenador(@ModelAttribute("usuario") EntrenadorRegistroDTO registroDTO) {
 		entrenadorServicio.guardar(registroDTO);
 		return "redirect:/registro?exito";
+	}
+
+	@Autowired
+	private EntrenadorServicio servicio;
+
+	@GetMapping("/login")
+	public String iniciarSesion() {
+		return "login";
+	}
+
+	@GetMapping("/")
+	public String verPaginaDeInicio(Model modelo) {
+		modelo.addAttribute("usuarios", servicio.listarUsuarios());
+		return "index";
 	}
 }

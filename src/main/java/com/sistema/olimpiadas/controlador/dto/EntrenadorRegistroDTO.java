@@ -37,7 +37,7 @@ public class EntrenadorRegistroDTO {
 		return apellidoMaterno;
 	}
 
-	public void setApellidoMarterno(String apellidoMaterno) { // New
+	public void setApellidoMaterno(String apellidoMaterno) { // New
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
