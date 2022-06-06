@@ -15,12 +15,12 @@
   <title>Dasboard</title>
 
   <body>
-    <h1 class="Titulo app-header" sec:authorize="hasRole('ADMIN')">Dashboard de Administrador</h1>
-    <h1 class="Titulo app-header" sec:authorize="hasRole('USER')">Dashboard de Jueces</h1>
+    <h1 class="Titulo app-header" sec:authorize="hasAuthority('ADMIN')">Dashboard de Administrador</h1>
+    <h1 class="Titulo app-header" sec:authorize="hasAuthority('JUEZ')">Dashboard de Jueces</h1>
 
-    <h1 class="Titulo app-header" sec:authorize="hasRole('ENTRENADOR')">Dashboard de Entrenadores</h1>
+    <h1 class="Titulo app-header" sec:authorize="hasAuthority('ENTRENADOR')">Dashboard de Entrenadores</h1>
 
-    <h1 class="Titulo app-header" sec:authorize="hasRole('COMPETIDOR')">Dashboard de Competidores</h1>
+    <h1 class="Titulo app-header" sec:authorize="hasAuthority('COMPETIDOR')">Dashboard de Competidores</h1>
     <div class="float-container">
       <div class="jumbotron jumbotronimg text-white" style="background-color: #001f61">
         <h1 class="display-4 texttotal font-weight-bold" th:text="${totalReportedCases}"></h1>
@@ -38,7 +38,7 @@
       </div>
       <br />
       <a class="link" href="/listar">
-        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+        <div class="courses-container zoom float-child" sec:authorize="hasAuthority('ADMIN')">
           <div class="course">
             <div class="jueces-color">
               <br />
@@ -54,7 +54,7 @@
       </a>
 
       <a class="link" href="listarDisciplinas">
-        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+        <div class="courses-container zoom float-child" sec:authorize="hasAuthority('ADMIN')">
           <div class="course">
             <div class="disciplinas-color">
               <br />
@@ -70,7 +70,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+        <div class="courses-container zoom float-child" sec:authorize="hasAuthority('ADMIN')">
           <div class="course">
             <div class="entrenadores-color">
               <br />
@@ -86,7 +86,7 @@
       </a>
 
       <a class="link" href="listarCompetidores">
-        <div class="courses-container zoom float-child" sec:authorize="hasRole('ADMIN')">
+        <div class="courses-container zoom float-child" sec:authorize="hasAuthority('ADMIN')">
           <div class="course">
             <div class="competidores-color">
               <br />
@@ -102,7 +102,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('USER')">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasAuthority('JUEZ')">
           <div class="course">
             <div class="calificar-color">
               <br />
@@ -118,7 +118,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('USER')">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasAuthority('JUEZ')">
           <div class="course">
             <div class="comentario-color">
               <br />
@@ -134,7 +134,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child-jueces" sec:authorize="hasRole('COMPETIDOR')">
+        <div class="courses-container zoom float-child-jueces" sec:authorize="hasAuthority('COMPETIDOR')">
           <div class="course">
             <div class="comentario-color">
               <br />
@@ -150,7 +150,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('COMPETIDOR')">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasAuthority('COMPETIDOR')">
           <div class="course">
             <div class="calificar-color">
               <br />
@@ -166,7 +166,7 @@
       </a>
 
       <a class="link" href="/listarCompetidores">
-        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('ENTRENADOR') ">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasAuthority('ENTRENADOR') ">
           <div class="course">
             <div class="competidores-color">
               <br />
@@ -182,7 +182,7 @@
       </a>
 
       <a class="link" href="#">
-        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasRole('ENTRENADOR')">
+        <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasAuthority('ENTRENADOR')">
           <div class="course">
             <div class="calificar-color">
               <br />
@@ -205,7 +205,7 @@
           <h3 class="center registrostitle">Relación <i class="fa-solid fa-book-bookmark"></i></h3>
           <br />
           <div class="row">
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-jueces order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de jueces</h6>
@@ -214,7 +214,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-disciplinas order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de disciplinas</h6>
@@ -223,7 +223,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-entrenadores order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de entrenadores</h6>
@@ -232,7 +232,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ADMIN')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-competidores order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de competidores</h6>
@@ -241,7 +241,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ENTRENADOR')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ENTRENADOR')">
               <div class="card bg-c-competidores order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de competidores</h6>
@@ -250,7 +250,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('ENTRENADOR')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ENTRENADOR')">
               <div class="card bg-c-jueces order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de calificaciones</h6>
@@ -259,7 +259,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('COMPETIDOR')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('COMPETIDOR')">
               <div class="card bg-c-jueces order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de calificaciones</h6>
@@ -268,7 +268,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('USER')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('JUEZ')">
               <div class="card bg-c-jueces order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de calificaciones</h6>
@@ -277,7 +277,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('USER')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('JUEZ')">
               <div class="card bg-c-comentario order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de comentarios</h6>
@@ -286,7 +286,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-xl-3" sec:authorize="hasRole('COMPETIDOR')">
+            <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('COMPETIDOR')">
               <div class="card bg-c-comentario order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de comentarios</h6>
