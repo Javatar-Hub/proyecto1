@@ -23,7 +23,7 @@ public class ComentarioJuezController {
   @Autowired
   private ComentarioJuezServicio comentarioJuezServicio;
 
-  @GetMapping({ "/listar" })
+  @GetMapping({ "/listarComentarios" })
   public String listarJueces(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
     Pageable pageRequest = PageRequest.of(page, 10);
     Page<ComentarioJuez> jueces = comentarioJuezServicio.visualizarComentarios(pageRequest);
@@ -33,7 +33,7 @@ public class ComentarioJuezController {
     modelo.addAttribute("jueces", jueces);
     modelo.addAttribute("page", pageRender);
 
-    return "listar";
+    return "listarComentarios";
   }
 
 }
