@@ -21,25 +21,28 @@
     <header th:replace="layout/layout :: header"></header>
     <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="jumbotron text-white" style="background-color: #001f61">
+        <div class="jumbotron text-white jumbotronimglistas" style="background-color: #001f61">
           <h1>
-            Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
+            Bienvenido
+            <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
           </h1>
           <hr class="my-4" />
-          <h6 sec:authorize="hasRole('ADMIN')">
+          <h6 sec:authorize="hasAuthority('ADMIN')">
             En este apartado podrá gestionar todo lo referente a los jueces, podrá registrar nuevos jueces, editar su información,
             eliminarlos o ver mas detalles.
           </h6>
-          <h6 sec:authorize="hasRole('USER')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
-          <h6 sec:authorize="hasRole('ENTRENADOR')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
+          <h6 sec:authorize="hasAuthority('JUEZ')">En este apartado podrá consultar información detallada de los jueces registrados</h6>
+          <h6 sec:authorize="hasAuthority('ENTRENADOR')">
+            En este apartado podrá consultar información detallada de los jueces registrados
+          </h6>
         </div>
         <div class="card text-white" style="background-color: #ffffff2c">
           <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
 
           <div class="card-body table-responsive">
             <h4 class="card-title">
-              <a th:href="@{/form}" class="btn btn-primary" sec:authorize="hasRole('ADMIN')"
+              <a th:href="@{/form}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')"
                 ><i class="fa-solid fa-circle-plus"></i> Agregar juez</a
               >
             </h4>
@@ -47,7 +50,7 @@
             <table class="table table-striped">
               <thead class="text-white">
                 <tr>
-                  <th>ID</th>
+                  <th>#</th>
                   <th>Nombre</th>
                   <th>Apellido Paterno</th>
                   <th>Apellido Materno</th>
@@ -56,8 +59,8 @@
                   <th>Edad</th>
                   <th>Foto</th>
                   <th>Detalles</th>
-                  <th sec:authorize="hasRole('ADMIN')">Editar</th>
-                  <th sec:authorize="hasRole('ADMIN')">Eliminar</th>
+                  <th sec:authorize="hasAuthority('ADMIN')">Editar</th>
+                  <th sec:authorize="hasAuthority('ADMIN')">Eliminar</th>
                 </tr>
               </thead>
               <tbody>
@@ -73,14 +76,13 @@
                   <td>
                     <a class="btn btn-info btn-sm" th:href="@{/ver/} + ${juez.id}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
                   </td>
-                  <td sec:authorize="hasRole('ADMIN')">
-                    <a class="btn btn-warning btn-sm" th:href="@{/form/} + ${juez.id}"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                  <td sec:authorize="hasAuthority('ADMIN')">
+                    <a class="btn btn-warning btn-sm text-white" th:href="@{/form/} + ${juez.id}"
+                      ><i class="fa-solid fa-pen-to-square"></i> Editar</a
+                    >
                   </td>
-                  <td sec:authorize="hasRole('ADMIN')">
-                    <a
-                      class="btn btn-danger btn-sm"
-                      th:href="@{/eliminar/} + ${juez.id}"
-                      onclick="return confirm('¿Estás seguro de eliminar al empleado?');"
+                  <td sec:authorize="hasAuthority('ADMIN')">
+                    <a class="btn btn-danger btn-sm text-white" th:onclick="eliminar([[${juez.id}]])"
                       ><i class="fa-solid fa-trash-can"></i> Eliminar</a
                     >
                   </td>
@@ -99,5 +101,45 @@
     >
       <i class="fa-solid fa-gavel" style="color: #ff7500"></i> Gestion de Jueces
     </div>
+    <!-- Sweet Alert 2 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
+  <script>
+    function eliminar(id) {
+      Swal.fire({
+        title: '¿Estás seguro de eliminar este juez ?',
+        text: 'Una vez eliminado no se podrá restablecer!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, borrarlo!',
+        cancelButtonText: 'Cancelar',
+      }).then((OK) => {
+        if (OK.isConfirmed) {
+          $.ajax({
+            url: '/eliminar/' + id,
+            success: function (res) {
+              console.log(res);
+            },
+          });
+          Swal.fire({
+            title: 'Juez eliminado!',
+            icon: 'success',
+          }).then((ok) => {
+            if (ok) {
+              location.href = '/listar';
+            }
+          });
+        } else {
+          Swal.fire('Cancelado!', 'Juez no eliminado', 'error');
+        }
+      });
+    }
+  </script>
 </html>

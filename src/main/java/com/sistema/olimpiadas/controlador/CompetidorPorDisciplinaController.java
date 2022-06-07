@@ -14,7 +14,6 @@ import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,17 +51,16 @@ public class CompetidorPorDisciplinaController {
     return "verCompetidores";
   }
 
-
   @RequestMapping("/listarCompetidores")
-  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
-    if(keyword!=null){
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword) {
+    if (keyword != null) {
       List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.getbyKeyword(keyword);
-      modelo.addAttribute("competidores",competidorPorDisciplina);
+      modelo.addAttribute("competidores", competidorPorDisciplina);
       LOG.info("Busqueda");
-    }else{
-      List<CompetidorPorDisciplina> competidorPorDisciplina=competidorPorDisciplinaServicio.visualizarCompetidores();
-      modelo.addAttribute("competidores",competidorPorDisciplina);
-     LOG.info("Pase");
+    } else {
+      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("competidores", competidorPorDisciplina);
+      LOG.info("Pase");
     }
     modelo.addAttribute("titulo", "Listado de Competidores");
     return "listarCompetidores";
@@ -152,7 +150,5 @@ public class CompetidorPorDisciplinaController {
     }
     return "redirect:/listarCompetidores";
   }
-
-  
 
 }

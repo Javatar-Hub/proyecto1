@@ -15,12 +15,12 @@
     <title>Crear disciplina</title>
     <meta charset="utf-8" />
   </head>
-  <body>
+  <body class="jumbotronimglistas" style="background-color: #001f61">
     <header th:replace="layout/layout :: header"></header>
     <br />
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #001f61">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #001f613f">
           <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
           <div class="card-body">
             <form th:action="@{/crear_disciplina}" th:object="${disciplina}" method="post" enctype="multipart/form-data">
@@ -30,7 +30,7 @@
                 <input type="hidden" th:field="*{id}" />
               </div>
 
-              <button type="submit" class="btn btn-success" sec:authorize="hasRole('ADMIN')">Registrar</button>
+              <button type="submit" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Registrar</button>
               <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarDisciplinas'">Cancelar</a>
             </form>
           </div>

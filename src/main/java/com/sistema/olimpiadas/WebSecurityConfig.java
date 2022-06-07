@@ -17,46 +17,48 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
-  public PasswordEncoder passwordEncoder() {
+  public BCryptPasswordEncoder BCryptPasswordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
-  @Override
-  @Bean
-  protected UserDetailsService userDetailsService() {
-    UserDetails usuario1 = User
-        .withUsername("Juez1")
-        .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
-        .roles("USER")
-        .build();
+  // @Override
+  // @Bean
+  // protected UserDetailsService userDetailsService() {
+  // UserDetails usuario1 = User
+  // .withUsername("Juez1")
+  // .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
+  // .roles("USER")
+  // .build();
 
-    UserDetails usuario2 = User
-        .withUsername("admin")
-        .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
-        .roles("ADMIN")
-        .build();
+  // UserDetails usuario2 = User
+  // .withUsername("admin")
+  // .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
+  // .roles("ADMIN")
+  // .build();
 
-    UserDetails usuario3 = User
-        .withUsername("Entrenador1")
-        .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
-        .roles("ENTRENADOR")
-        .build();
+  // UserDetails usuario3 = User
+  // .withUsername("Entrenador1")
+  // .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
+  // .roles("ENTRENADOR")
+  // .build();
 
-    UserDetails usuario4 = User
-        .withUsername("Competidor1")
-        .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
-        .roles("COMPETIDOR")
-        .build();
+  // UserDetails usuario4 = User
+  // .withUsername("Competidor1")
+  // .password("$2a$10$21k9QLX0vdSytZ36T56yHeDwn2y6DiHdJ2k7fCzccV7CuskmNQmEq")
+  // .roles("COMPETIDOR")
+  // .build();
 
-    return new InMemoryUserDetailsManager(usuario1, usuario2, usuario3, usuario4);
-  }
+  // return new InMemoryUserDetailsManager(usuario1, usuario2, usuario3,
+  // usuario4);
+  // }
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
         .antMatchers("/").authenticated()
-        .antMatchers("/form/*", "/eliminar/*", "/crear_disciplina/*", "/eliminaDis/*").hasRole("ADMIN")
-        .antMatchers("/crear_competidor/*", "/eliminarComp/*").hasRole("ENTRENADOR")
+        .antMatchers("/registro", "/listarEntrenadores").permitAll()
+        .antMatchers("/form/*", "/eliminar/*", "/crear_disciplina/*", "/eliminaDis/*").hasAuthority("ADMIN")
+        .antMatchers("/crear_competidor/*", "/eliminarComp/*").hasAuthority("ENTRENADOR")
         .anyRequest().authenticated()
         .and()
         .formLogin()
