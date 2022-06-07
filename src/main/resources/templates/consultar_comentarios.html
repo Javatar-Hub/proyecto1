@@ -27,56 +27,23 @@
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
           </h1>
           <hr class="my-4" />
-          <h6 sec:authorize="hasRole('USER')">
+          <h6 sec:authorize="hasRole('COMPETIDOR')">
             En este apartado podrá agregar comentarios a los competidores.
           </h6>
         </div>
         <div class="card text-white" style="background-color: #ffffff2c">
           <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
           <div class="card-body table-responsive">
-            <form th:action="@{/listarCompetidores}" method="get">
-              <input type="text" name="keyword" th:value="${keyword}"  placeholder="Busqueda por nombre y apellido" size="50" >
-              <button type="submit" class="btn btn-info" >Buscar</button>
-              <button type="submit" class="btn btn-info" >Reiniciar</button>
-              </form>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
               <thead class="text-white">
                 <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Apellido Paterno</th>
-                  <th>Apellido Materno</th>
-                  <th>Usuario</th>
-                  <th>Disciplina</th>
-                  <th>Plantel</th>
-                  <th>Edad</th>
-                  <th>Foto</th>
-                  <th>Detalles</th>
                   <th>Comentario</th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="competidorPorDisciplina : ${competidores}">
-                  <td th:text="${competidorPorDisciplina.id}">Nombre</td>
-                  <td th:text="${competidorPorDisciplina.nombre}">Nombre</td>
-                  <td th:text="${competidorPorDisciplina.paterno}">Apellido Paterno</td>
-                  <td th:text="${competidorPorDisciplina.materno}">Apellido Materno</td>
-                  <td th:text="${competidorPorDisciplina.usuario}">Usuario</td>
-                  <td th:text="${competidorPorDisciplina.disciplina}">Disciplina</td>
-                  <td th:text="${competidorPorDisciplina.plantel}">Plantel</td>
-                  <td th:text="${competidorPorDisciplina.edad}">Edad</td>
-                  <td th:text="${competidorPorDisciplina.foto}">Foto</td>
-                  <td>
-                    <a class="btn btn-info btn-sm" th:href="@{/verCompetidores/} + ${competidorPorDisciplina.id}"
-                      ><i class="fa-solid fa-circle-info"></i> Detalles</a
-                    >
-                  </td>
-                  <td>
-                    <a class="btn btn-warning btn-sm" th:href="@{/crear_comentario/} + ${competidorPorDisciplina.id}"
-                      ><i class="fa-solid fa-pen-to-square"></i> Agregar Comentario</a
-                     >
-                  </td>
+                <tr th:each="comentarioJuez : ${comentarios}">
+                  <td th:text="${comentarioJuez.comentario}">Comentario</td>
                 </tr>
               </tbody>
             </table>

@@ -11,66 +11,47 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "comentarios")
 public class ComentarioJuez {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idcomentario;
 
+    @Column(name = "idcompetidor", nullable = false)
+    private Long idcompetidor;
+    
     @NotEmpty
     @Column(name = "Comentario", nullable = false, length = 140)
     private String comentario;
 
-    @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 50)
-    private Disciplina disciplina;
+    @Column(name = "Juez", length = 50)
+    private String juez;
 
-    @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 50)
-    private Juez juez;
-
-    @NotEmpty
-    @Column(name = "Comentario", nullable = false, length = 50)
-    private CompetidorPorDisciplina competidor;
-
-    public ComentarioJuez(Long id, @NotEmpty String comentario, @NotEmpty Disciplina disciplina, @NotEmpty Juez juez,
-            @NotEmpty CompetidorPorDisciplina competidor) {
+    public ComentarioJuez(){
         super();
-        this.id = id;
+    }
+
+    public ComentarioJuez(Long idcomentario, @NotEmpty String comentario, String juez, Long idcompetidor) {
+        super();
+        this.idcomentario = idcomentario;
+        this.juez = juez;
         this.comentario = comentario;
-        this.disciplina = disciplina;
-        this.juez = juez;
-        this.competidor = competidor;
+        this.idcompetidor = idcompetidor;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public Long getIdcompetidor() {
+        return idcompetidor;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public Juez getJuez() {
-        return juez;
-    }
-
-    public void setJuez(Juez juez) {
-        this.juez = juez;
-    }
-
-    public CompetidorPorDisciplina getCompetidor() {
-        return competidor;
-    }
-
-    public void setCompetidor(CompetidorPorDisciplina competidor) {
-        this.competidor = competidor;
+    public void setIdcompetidor(Long idcompetidor) {
+        this.idcompetidor = idcompetidor;
     }
 
     public Long getId(){
-        return id;
+        return idcomentario;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idcomentario = id;
     }
 
     public String getComentario() {
@@ -79,6 +60,14 @@ public class ComentarioJuez {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public String getJuez() {
+        return juez;
+    }
+
+    public void setJuez(String juez) {
+        this.juez = juez;
     }
 
 }

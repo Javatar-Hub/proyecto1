@@ -3,45 +3,104 @@ package com.sistema.olimpiadas.controlador;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
+import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.ComentarioJuez;
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
-import com.sistema.olimpiadas.modelo.Disciplina;
+import com.sistema.olimpiadas.repositorios.ComentarioJuezRepository;
+import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.ComentarioJuezServicio;
-import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaImpl;
-import com.sistema.olimpiadas.servicio.DisciplinaServicio;
-import com.sistema.olimpiadas.servicio.DisciplinaServicioImpl;
-import com.sistema.olimpiadas.util.paginacion.PageRender;
+import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
 
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class ComentarioJuezController {
+
   @Autowired
-  private DisciplinaServicio disciplinaServicio;
+  private CompetidorPorDisciplinaServicio competidorPorDisciplinaServicio;
 
-  @GetMapping({ "/listarComentarios" })
-  public String listarComentarios(@RequestParam(name = "page", defaultValue = "0") int page, Model modelo) {
-    Pageable pageRequest = PageRequest.of(page, 10);
-    Page<Disciplina> disciplinas = disciplinaServicio.visualizarDisciplinas(pageRequest);
-    PageRender<Disciplina> pageRender = new PageRender<>("/listarComentarios", disciplinas);
+  @Autowired
+  private DisciplinaRepository disciplinaRepository;
 
-    modelo.addAttribute("titulo", "Listado de Disciplina");
-    modelo.addAttribute("Disciplinas", disciplinas);
-    modelo.addAttribute("page", pageRender);
+  @Autowired
+  private ComentarioJuezServicio comentarioServicio;
 
+  private final Logger LOG = LoggerFactory.getLogger(CompetidorPorDisciplinaController.class);
+
+  @GetMapping("/listarComentarios")
+  public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword){
+    if(keyword!=null){
+      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.getbyKeyword(keyword);
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+      LOG.info("Busqueda");
+    }else{
+      List<CompetidorPorDisciplina> competidorPorDisciplina=competidorPorDisciplinaServicio.visualizarCompetidores();
+      modelo.addAttribute("competidores",competidorPorDisciplina);
+     LOG.info("Pase");
+    }
+    modelo.addAttribute("titulo", "Listado de Competidores");
     return "listarComentarios";
+  }
+    
+  @GetMapping("/consultar_comentarios")
+  public String consultarComentarios(Long id, Model modelo,
+      RedirectAttributes flash) {
+        System.out.println(id);
+        List<ComentarioJuez> comentarios = comentarioServicio.findComentariosPorCompetidor(id);
+        modelo.addAttribute("comentarios", comentarios);
+        return "consultar_comentarios";
+  }
+
+  @GetMapping("/crear_comentario")
+  public String mostrarAgregarComentario(Map<String, Object> modelo) {
+    ComentarioJuez comentario = new ComentarioJuez();
+    modelo.put("comentario", comentario);
+    modelo.put("titulo", "Agregar comentario");
+    return "crear_comentario";
+  }
+
+  @PostMapping("/crear_comentario")
+  public String guardarComentario(ComentarioJuez comentario) {
+    comentarioServicio.guardarComentarioJuez(comentario);
+    return "redirect:/listarComentarios";
+  }
+
+  @GetMapping("/crear_comentario/{id}")
+  public String agregarComentario(@PathVariable(value = "id") Long id, Model modelo,
+      RedirectAttributes flash) {
+        ComentarioJuez comentario = new ComentarioJuez();
+        comentario.setIdcompetidor(id);
+        modelo.addAttribute("comentario", comentario);
+        CompetidorPorDisciplina competidorPorDisciplina = null;
+        if (id > 0) {
+          competidorPorDisciplina = competidorPorDisciplinaServicio.findOne(id);
+          if (competidorPorDisciplina == null) {
+            flash.addFlashAttribute("error", "El ID del Competidor Por Disciplina no existe en la base de datos");
+            return "redirect:/listarComentarios";
+          }
+        } else {
+          flash.addFlashAttribute("error", "El ID del Competidor Por Disciplina no puede ser cero");
+          return "redirect:/listarComentarios";
+        }
+    
+        ((Map<String, Object>) modelo).put("titulo", "Agregar comentario");
+        return "crear_comentario";
   }
 
 }
