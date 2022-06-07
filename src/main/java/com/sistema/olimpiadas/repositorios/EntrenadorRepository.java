@@ -13,8 +13,16 @@ import com.sistema.olimpiadas.modelo.Usuario;
 public interface EntrenadorRepository extends JpaRepository<Usuario, Long> {
     public Usuario findByEmail(String email);
 
-    // @Query("SELECT user FROM Usuario user where ?3 in user.roles")
-    // List<Usuario> findUserByRole(int role);
+    @Query("SELECT user FROM Usuario user where ?1 in user.roles")
+    List<Usuario> findUserByRole(int role);
+
+    // @Query(value = "select * from usuarios u where u.nombre like %:keyword% or
+    // u.apellidoPaterno like %:keyword%", nativeQuery = true)
+    // List<Usuario> findByKeyword(@Param("keyword") String keyword);
+
+    // @Query("SELECT p FROM Usuario p WHERE CONCAT(p.nombre, p.apellidoPaterno)
+    // LIKE %?1%")
+    // public List<Usuario> search(String keyword);
 
     @Query(value = "select * from usuarios u  where u.nombre like %:keyword% or u.apellidoPaterno like %:keyword%", nativeQuery = true)
     List<Usuario> findByKeyword(@Param("keyword") String keyword);

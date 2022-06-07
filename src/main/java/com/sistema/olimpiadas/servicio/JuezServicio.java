@@ -17,4 +17,6 @@ public interface JuezServicio {
   public Juez findOne(Long id);
 
   public void eliminarJuez(Long id);
+
+  public long cuentaJueces();
 }

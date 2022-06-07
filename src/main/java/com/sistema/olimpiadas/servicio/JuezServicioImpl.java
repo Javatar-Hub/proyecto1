@@ -48,4 +48,9 @@ public class JuezServicioImpl implements JuezServicio {
 
   }
 
+  @Override
+  public long cuentaJueces() {
+    return juezRepository.countById();
+  }
+
 }

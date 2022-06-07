@@ -39,7 +39,8 @@ public class JuezController {
   private JuezServicio juezServicio;
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String index() {
+  public String index(Model modelo) {
+    modelo.addAttribute("jueces", juezServicio.cuentaJueces());
     return "index";
   }
 

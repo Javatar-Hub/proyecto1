@@ -37,48 +37,48 @@
             En este apartado podrá consultar información detallada de los entrenadores registrados
           </h6>
         </div>
-      </div>
+        <div class="text-white" style="background-color: #ffffff2c">
+          <h4 class="card-header text-white" style="background-color: #001f61">Lista de entrenadores registrados</h4>
 
-      <div class="text-white" style="background-color: #ffffff2c">
-        <h4 class="card-header text-white" style="background-color: #001f61">Lista de entrenadores registrados</h4>
+          <br />
 
-        <br />
-
-        <form class="input-group" th:action="@{/listarEntrenadores}" method="get">
-          <input
-            type="text"
-            class="form-control"
-            name="keyword"
-            th:value="${keyword}"
-            placeholder="Busqueda por nombre ó apellido"
-            size="50"
-          />
-          <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-          <button type="submit" class="btn btn-light"><i class="fa-solid fa-rotate-right"></i></button>
-        </form>
-        <table class="table table-striped">
-          <thead class="text-white">
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Apellido Paterno</th>
-              <th>Apellido Materno</th>
-              <th>Email</th>
-              <th>Edad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- list users by role -->
-            <tr th:each="usuario : ${usuarios}">
-              <td th:text="${usuario.id}">ID</td>
-              <td th:text="${usuario.nombre}">ID</td>
-              <td th:text="${usuario.apellidoPaterno}">ID</td>
-              <td th:text="${usuario.apellidoMaterno}">ID</td>
-              <td th:text="${usuario.email}">ID</td>
-              <td th:text="${usuario.edad + ' años'}">ID</td>
-            </tr>
-          </tbody>
-        </table>
+          <form class="input-group" th:action="@{/listarEntrenadores}" method="get">
+            <input
+              type="text"
+              id="keyword"
+              class="form-control"
+              name="keyword"
+              th:value="${keyword}"
+              placeholder="Busqueda por nombre ó apellido"
+              size="50"
+            />
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            <button type="submit" class="btn btn-light"><i class="fa-solid fa-rotate-right"></i></button>
+          </form>
+          <table class="table table-striped">
+            <thead class="text-white">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Email</th>
+                <th>Edad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- list users by role -->
+              <tr th:each="usuario : ${usuarios}">
+                <td th:text="${usuario.id}">ID</td>
+                <td th:text="${usuario.nombre}">ID</td>
+                <td th:text="${usuario.apellidoPaterno}">ID</td>
+                <td th:text="${usuario.apellidoMaterno}">ID</td>
+                <td th:text="${usuario.email}">ID</td>
+                <td th:text="${usuario.edad + ' años'}">ID</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <footer th:replace="layout/layout :: footer"></footer>

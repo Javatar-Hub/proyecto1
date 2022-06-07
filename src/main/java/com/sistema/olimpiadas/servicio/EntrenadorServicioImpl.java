@@ -71,4 +71,12 @@ public class EntrenadorServicioImpl implements EntrenadorServicio {
 		return entrenadorRepository.findByKeyword(keyword);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Usuario> visualizarEntrenadores() {
+		List<Usuario> list = (List<Usuario>) entrenadorRepository.findAll();
+		return list;
+
+	}
+
 }
