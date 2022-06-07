@@ -12,4 +12,9 @@ public interface EntrenadorServicio extends UserDetailsService {
     public Usuario guardar(EntrenadorRegistroDTO registroDTO);
 
     public List<Usuario> listarUsuarios();
+
+    public List<Usuario> getAllUsers();
+
+    public List<Usuario> getbyKeyword(String keyword);
+
 }

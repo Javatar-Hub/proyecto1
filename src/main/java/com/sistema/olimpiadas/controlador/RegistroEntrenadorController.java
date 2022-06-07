@@ -1,5 +1,7 @@
 package com.sistema.olimpiadas.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.olimpiadas.controlador.dto.EntrenadorRegistroDTO;
+import com.sistema.olimpiadas.modelo.Usuario;
 import com.sistema.olimpiadas.servicio.EntrenadorServicio;
 
 @Controller
 @RequestMapping("/registro")
 public class RegistroEntrenadorController {
 
+	@Autowired
 	private EntrenadorServicio entrenadorServicio;
 
 	public RegistroEntrenadorController(EntrenadorServicio entrenadorServicio) {
@@ -38,17 +42,17 @@ public class RegistroEntrenadorController {
 		return "redirect:/registro?exito";
 	}
 
-	@Autowired
-	private EntrenadorServicio servicio;
-
 	@GetMapping("/login")
 	public String iniciarSesion() {
 		return "login";
 	}
 
-	@GetMapping("/")
+	@GetMapping("/listarEntrenadores")
 	public String verPaginaDeInicio(Model modelo) {
-		modelo.addAttribute("usuarios", servicio.listarUsuarios());
-		return "index";
+		modelo.addAttribute("usuarios", entrenadorServicio.listarUsuarios());
+		return "listarEntrenadores";
 	}
+
+	// aqui
+
 }
