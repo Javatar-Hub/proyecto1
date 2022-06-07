@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sistema.olimpiadas.controlador.dto.EntrenadorRegistroDTO;
 import com.sistema.olimpiadas.repositorios.EntrenadorRepository;
@@ -57,6 +58,17 @@ public class EntrenadorServicioImpl implements EntrenadorServicio {
 	@Override
 	public List<Usuario> listarUsuarios() {
 		return entrenadorRepository.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Usuario> getAllUsers() {
+		List<Usuario> list = (List<Usuario>) entrenadorRepository.findAll();
+		return list;
+	}
+
+	public List<Usuario> getbyKeyword(String keyword) {
+		return entrenadorRepository.findByKeyword(keyword);
 	}
 
 }
