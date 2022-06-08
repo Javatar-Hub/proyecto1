@@ -17,11 +17,10 @@ public class CompetidorPorDisciplinaImpl implements CompetidorPorDisciplinaServi
 
   @Override
   @Transactional(readOnly = true)
-   public List<CompetidorPorDisciplina> visualizarCompetidores(){
-  List<CompetidorPorDisciplina> list =  (List<CompetidorPorDisciplina>)competidorPorDisciplinaRepository.findAll();
-  return list;
- }
-
+  public List<CompetidorPorDisciplina> visualizarCompetidores() {
+    List<CompetidorPorDisciplina> list = (List<CompetidorPorDisciplina>) competidorPorDisciplinaRepository.findAll();
+    return list;
+  }
 
   @Override
   @Transactional
@@ -42,9 +41,13 @@ public class CompetidorPorDisciplinaImpl implements CompetidorPorDisciplinaServi
 
   }
 
-
-  public List<CompetidorPorDisciplina> getbyKeyword(String keyword){
+  public List<CompetidorPorDisciplina> getbyKeyword(String keyword) {
     return competidorPorDisciplinaRepository.findByKeyword(keyword);
+  }
+
+  @Override
+  public long cuentaCompetidores() {
+    return competidorPorDisciplinaRepository.countByIdCompetidores();
   }
 
 }
