@@ -4,12 +4,8 @@ import java.util.List;
 
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 
-
-
 public interface CompetidorPorDisciplinaServicio {
     public List<CompetidorPorDisciplina> visualizarCompetidores();
-
-
 
     public CompetidorPorDisciplina guardarCompetidorPorDisciplina(CompetidorPorDisciplina competidorPorDisciplina);
 
@@ -18,4 +14,6 @@ public interface CompetidorPorDisciplinaServicio {
     public void eliminarCompetidorPorDisciplina(Long id);
 
     public List<CompetidorPorDisciplina> getbyKeyword(String keyword);
+
+    public long cuentaCompetidores();
 }

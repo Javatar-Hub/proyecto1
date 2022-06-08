@@ -2,19 +2,20 @@ package com.sistema.olimpiadas.controlador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.olimpiadas.controlador.dto.EntrenadorRegistroDTO;
+
 import com.sistema.olimpiadas.servicio.EntrenadorServicio;
 
 @Controller
 @RequestMapping("/registro")
 public class RegistroEntrenadorController {
 
+	@Autowired
 	private EntrenadorServicio entrenadorServicio;
 
 	public RegistroEntrenadorController(EntrenadorServicio entrenadorServicio) {
@@ -38,17 +39,26 @@ public class RegistroEntrenadorController {
 		return "redirect:/registro?exito";
 	}
 
-	@Autowired
-	private EntrenadorServicio servicio;
+	// @GetMapping("/login")
+	// public String iniciarSesion() {
+	// return "login";
+	// }
 
-	@GetMapping("/login")
-	public String iniciarSesion() {
-		return "login";
-	}
+	// @GetMapping("/listarEntrenadores")
+	// public String verPaginaDeInicio(Model modelo) {
+	// modelo.addAttribute("usuarios", entrenadorServicio.listarUsuarios());
+	// return "listarEntrenadores";
+	// }
 
-	@GetMapping("/")
-	public String verPaginaDeInicio(Model modelo) {
-		modelo.addAttribute("usuarios", servicio.listarUsuarios());
-		return "index";
-	}
+	// aqui
+
+	// @RequestMapping("/listarEntrenadores")
+	// public String viewHomePage(Model model, @Param("keyword") String keyword) {
+	// List<Usuario> listProducts = entrenadorServicio.listAll(keyword);
+	// model.addAttribute("Usuarios", listProducts);
+	// model.addAttribute("keyword", keyword);
+
+	// return "listarEntrenadores";
+	// }
+
 }

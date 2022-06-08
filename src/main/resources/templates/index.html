@@ -69,7 +69,7 @@
         </div>
       </a>
 
-      <a class="link" href="#">
+      <a class="link" href="listarEntrenadores">
         <div class="courses-container zoom float-child" sec:authorize="hasAuthority('ADMIN')">
           <div class="course">
             <div class="entrenadores-color">
@@ -209,7 +209,7 @@
               <div class="card bg-c-jueces order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de jueces</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-gavel"></i><span>10</span></h2>
+                  <h2 class="text-right"><i class="fa-solid fa-gavel"></i><span th:text="${jueces}"></span></h2>
                 </div>
               </div>
             </div>
@@ -218,7 +218,7 @@
               <div class="card bg-c-disciplinas order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de disciplinas</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-basketball"></i><span>20</span></h2>
+                  <h2 class="text-right"><i class="fa-solid fa-basketball"></i><span th:text="${disciplinas}"></span></h2>
                 </div>
               </div>
             </div>
@@ -226,8 +226,8 @@
             <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-entrenadores order-card">
                 <div class="card-block center">
-                  <h6 class="m-b-20">Total de entrenadores</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-people-group"></i><span>12</span></h2>
+                  <h6 class="m-b-20">Total de usuarios</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-people-group"></i><span th:text="${usuarios}"></span></h2>
                 </div>
               </div>
             </div>
@@ -236,7 +236,7 @@
               <div class="card bg-c-competidores order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de competidores</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span>30</span></h2>
+                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span th:text="${competidores}"></span></h2>
                 </div>
               </div>
             </div>
@@ -245,7 +245,7 @@
               <div class="card bg-c-competidores order-card">
                 <div class="card-block center">
                   <h6 class="m-b-20">Total de competidores</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span>30</span></h2>
+                  <h2 class="text-right"><i class="fa-solid fa-medal"></i><span th:text="${competidores}"></span></h2>
                 </div>
               </div>
             </div>
