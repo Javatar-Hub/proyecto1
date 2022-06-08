@@ -79,4 +79,9 @@ public class EntrenadorServicioImpl implements EntrenadorServicio {
 
 	}
 
+	@Override
+	public long cuentaUsuarios() {
+		return entrenadorRepository.countByIdUsuarios();
+	}
+
 }

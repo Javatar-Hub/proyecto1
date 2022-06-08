@@ -19,4 +19,6 @@ public interface EntrenadorServicio extends UserDetailsService {
 
     public List<Usuario> visualizarEntrenadores();
 
+    public long cuentaUsuarios();
+
 }

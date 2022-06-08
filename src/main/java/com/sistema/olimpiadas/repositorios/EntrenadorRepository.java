@@ -27,4 +27,7 @@ public interface EntrenadorRepository extends JpaRepository<Usuario, Long> {
     @Query(value = "select * from usuarios u  where u.nombre like %:keyword% or u.apellidoPaterno like %:keyword%", nativeQuery = true)
     List<Usuario> findByKeyword(@Param("keyword") String keyword);
 
+    @Query("select count(u) from Usuario u ")
+    long countByIdUsuarios();
+
 }

@@ -226,8 +226,8 @@
             <div class="col-md-4 col-xl-3" sec:authorize="hasAuthority('ADMIN')">
               <div class="card bg-c-entrenadores order-card">
                 <div class="card-block center">
-                  <h6 class="m-b-20">Total de entrenadores</h6>
-                  <h2 class="text-right"><i class="fa-solid fa-people-group"></i><span>12</span></h2>
+                  <h6 class="m-b-20">Total de usuarios</h6>
+                  <h2 class="text-right"><i class="fa-solid fa-people-group"></i><span th:text="${usuarios}"></span></h2>
                 </div>
               </div>
             </div>
