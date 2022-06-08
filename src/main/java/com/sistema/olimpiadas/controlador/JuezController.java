@@ -38,11 +38,11 @@ public class JuezController {
   @Autowired
   private JuezServicio juezServicio;
 
-  @RequestMapping(value = "/", method = RequestMethod.GET)
-  public String index(Model modelo) {
-    modelo.addAttribute("jueces", juezServicio.cuentaJueces());
-    return "index";
-  }
+  // @RequestMapping(value = "/", method = RequestMethod.GET)
+  // public String index(Model modelo) {
+  // modelo.addAttribute("jueces", juezServicio.cuentaJueces());
+  // return "index";
+  // }
 
   @GetMapping("/ver/{id}")
   public String verDetallesDelJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,

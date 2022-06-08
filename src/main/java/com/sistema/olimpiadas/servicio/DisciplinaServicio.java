@@ -8,9 +8,14 @@ import org.springframework.data.domain.Page;
 
 public interface DisciplinaServicio {
     public List<Disciplina> visualizarDisciplinas();
+
     public Page<Disciplina> visualizarDisciplinas(Pageable pageable);
+
     public Disciplina guardarDisciplina(Disciplina disciplina);
+
     public Disciplina findOne(Long id);
+
     public void eliminarDisciplina(Long id);
 
+    public long cuentaDisciplinas();
 }
