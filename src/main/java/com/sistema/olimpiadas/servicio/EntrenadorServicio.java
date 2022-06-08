@@ -17,4 +17,8 @@ public interface EntrenadorServicio extends UserDetailsService {
 
     public List<Usuario> getbyKeyword(String keyword);
 
+    public List<Usuario> visualizarEntrenadores();
+
+    public long cuentaUsuarios();
+
 }
