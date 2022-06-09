@@ -20,4 +20,7 @@ public interface CompetidorPorDisciplinaRepository extends JpaRepository<Competi
     @Query(value = "select * from competidores e  where e.nombre_de_usuario like %:keyword% ", nativeQuery = true)
     CompetidorPorDisciplina findByEmail(@Param("keyword") String keyword);
 
+    @Query(value = "select * from competidores x where x.nombre like %:keyword% ", nativeQuery = true)
+    CompetidorPorDisciplina findByNombre(@Param("keyword") String keyword);
+
 }

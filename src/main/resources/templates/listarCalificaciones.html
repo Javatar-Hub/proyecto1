@@ -26,19 +26,19 @@
             Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
           </h1>
-          <h6 sec:authorize="hasAuthority('JUEZ')">En este apartado podrás hacer comentarios a los competidores.</h6>
+          <h6 sec:authorize="hasAuthority('JUEZ')">En este apartado podrás calificar a los competidores.</h6>
           <hr class="my-4" />
-          <h6 sec:authorize="hasRole('USER')">En este apartado podrá agregar comentarios a los competidores.</h6>
+          <h6 sec:authorize="hasRole('JUEZ')">En este apartado podrá agregar calificaciones a los competidores.</h6>
         </div>
         <div class="card text-white" style="background-color: #ffffffb1">
           <h4 class="card-header text-white" style="background-color: #0d0d0d" th:text="${titulo}"></h4>
           <div class="card-body table-responsive">
-            <form th:action="@{/listarCompetidores}" method="get" class="input-group">
+            <form th:action="@{/listarCalificaciones}" class="input-group" method="get">
               <input
                 type="text"
                 name="keyword"
-                th:value="${keyword}"
                 class="form-control"
+                th:value="${keyword}"
                 placeholder="Busqueda por nombre y apellido"
                 size="50"
               />
@@ -58,7 +58,7 @@
                   <th>Plantel</th>
                   <th>Edad</th>
                   <th>Foto</th>
-                  <th>Comentario</th>
+                  <th>Calificacion</th>
                 </tr>
               </thead>
               <tbody>
@@ -74,8 +74,8 @@
                   <td th:text="${competidorPorDisciplina.foto}">Foto</td>
 
                   <td>
-                    <a class="btn btn-warning btn-sm" th:href="@{/crear_comentario/} + ${competidorPorDisciplina.id}"
-                      ><i class="fa-solid fa-pen-to-square"></i> Agregar Comentario</a
+                    <a class="btn btn-warning btn-sm" th:href="@{/crear_calificacion/} + ${competidorPorDisciplina.id}"
+                      ><i class="fa-solid fa-pen-to-square"></i> Agregar Calificacion</a
                     >
                   </td>
                 </tr>
@@ -90,7 +90,7 @@
       class="floating-text-jueces"
       style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
     >
-      <i class="fa-solid fa-medal" style="color: #ff7500"></i> Gestion de comentarios
+      <i class="fa-solid fa-medal" style="color: #ff7500"></i> Gestion de calificaciones
     </div>
   </body>
 </html>

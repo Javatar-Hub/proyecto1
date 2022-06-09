@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/css/styles.css" />
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="layout/layout :: head">
-    <title>Crear comentario</title>
+    <title>Crear calificacion</title>
     <meta charset="utf-8" />
   </head>
   <body>
@@ -23,22 +23,23 @@
         <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card jumbotronimg">
           <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
           <div class="card-body">
-            <form th:action="@{/crear_comentario}" th:object="${comentario}" method="post" enctype="multipart/form-data">
+            <form th:action="@{/crear_calificacion}" th:object="${calificacion}" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="nombre" style="color: #ffffff">Comentario</label>
-                <input type="text" class="form-control" th:field="*{comentario}" placeholder="Escriba su comentario" required />
-                <input type="hidden" th:field="*{idcompetidor}" />
+                <label for="calificacion" style="color: #ffffff">Calificacion</label>
+                <p style="color: #ffffff">"Escriba una calificacion de 0 a 10"</p>
+                <input type="number" min="0" max="10" class="form-control" name="edad" th:field="*{calificacion}" />
+                <input type="hidden" th:field="*{competidor}" />
               </div>
 
-              <button type="submit" class="btn btn-success" sec:authorize="hasAuthority('JUEZ')">Agregar</button>
-              <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarComentarios'">Cancelar</a>
+              <button type="submit" class="btn btn-success" sec:authorize="hasAuthority('JUEZ')">Guardar</button>
+              <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarCalificaciones'">Cancelar</a>
             </form>
           </div>
         </div>
       </div>
     </div>
     <br />
-    <button type="cancel" class="btn btn-primary" onclick="window.location='/listarCompetidores'">Volver</button>
+    <button type="cancel" class="btn btn-primary" onclick="window.location='/listarCalificaciones'">Volver</button>
     <footer th:replace="layout/layout :: footer"></footer>
   </body>
 </html>
