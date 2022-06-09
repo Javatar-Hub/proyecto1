@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: linear-gradient(45deg, #001f61, #9790f2);
+  background-image: url('https://cdn.discordapp.com/attachments/984144402349973585/984293537489252352/pexels-davi-pimentel-2064827.jpg');
   font-family: 'Muli', sans-serif;
   display: flex;
   align-items: center;
@@ -11,10 +11,14 @@ body {
   min-height: 100vh;
   background-size: 100%;
   margin: 0;
+  background-position: 50% 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .jumbotronimg {
-  background-image: url('../images/fondoprome.png');
+  background-image: url('https://media0.giphy.com/media/l0HlTy9x8FZo0XO1i/200.webp?cid=ecf05e47t32ubrhongcxn70his37vbatokuxqxpt02r0rqh0&rid=200.webp&ct=g');
   background-size: cover;
   background-size: 100%;
   background-position: center;
@@ -23,7 +27,16 @@ body {
   flex-direction: column;
 }
 .jumbotronimglistas {
-  background-image: url('../images/fondoprome.png');
+  background-image: url('https://cdn.discordapp.com/attachments/984144402349973585/984293537489252352/pexels-davi-pimentel-2064827.jpg');
+  background-size: cover;
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+
+  flex-direction: column;
+}
+.jumbotronregistros {
+  background-image: url('https://cdn.discordapp.com/attachments/984144402349973585/984293537489252352/pexels-davi-pimentel-2064827.jpg');
   background-size: cover;
   background-size: 100%;
   background-position: center;
@@ -126,8 +139,8 @@ body {
 
 .floating-btn {
   border-radius: 26.5px;
-  background-color: #001f61;
-  border: 1px solid #001f61;
+  background-color: #0d0d0d;
+  border: 1px solid #0d0d0d;
   box-shadow: 0 16px 22px -17px #03153b;
   color: #fff;
   cursor: pointer;
@@ -142,7 +155,7 @@ body {
 
 .floating-btn:hover {
   background-color: #ffffff;
-  color: #001f61;
+  color: #0d0d0d;
 }
 
 .floating-btn:focus {
@@ -150,7 +163,7 @@ body {
 }
 
 .floating-text-jueces {
-  background-color: #001f61;
+  background-color: #0d0d0d;
   border-radius: 10px 10px 0 0;
   color: #fff;
   font-family: 'Muli';
@@ -163,7 +176,7 @@ body {
   z-index: 998;
 }
 .floating-text {
-  background-color: #001f61;
+  background-color: #0d0d0d;
   border-radius: 10px 10px 0 0;
   color: #fff;
   font-family: 'Muli';
@@ -215,7 +228,7 @@ body {
   color: #fff;
 }
 .app-header {
-  background-color: #001f61;
+  background-color: #0d0d0d;
   padding: 30px 0;
   width: 100%;
 
@@ -228,7 +241,7 @@ body {
   transition: 0.3s;
 }
 .app-header-navbar {
-  background-color: #001f61;
+  background-color: #0d0d0d;
   padding: 30px 0;
   width: 100%;
   border-radius: 0 0 30px 30px;
@@ -302,7 +315,7 @@ main {
 }
 
 .div5 {
-  background-color: #001f6137;
+  background-color: #0d0d0d37;
   grid-row: 1/4;
   grid-column: 4/3;
   margin-left: 60px;
@@ -317,7 +330,7 @@ main {
 }
 
 .bg-c-jueces {
-  background: #001f61;
+  background: #0d0d0d;
   color: #ffffff;
   width: 100%;
   border-radius: 10px;
@@ -361,8 +374,8 @@ main {
 }
 
 .registrostitle {
-  background-color: #001f61;
-  border: 1px solid #001f61;
+  background-color: #0d0d0d;
+  border: 1px solid #0d0d0d;
   box-shadow: 0 16px 22px -17px #03153b;
   color: #fff;
   font-size: 16px;

@@ -15,12 +15,12 @@
     <meta charset="utf-8" />
     <title>Crear Competidor</title>
   </head>
-  <body class="jumbotronimglistas" style="background-color: #001f61">
+  <body class="jumbotronimglistas" style="background-color: #0d0d0d">
     <header th:replace="layout/layout :: header"></header>
     <br />
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #001f613f">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card" style="background-color: #0d0d0d3f">
           <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
           <div class="card-body">
             <form th:action="@{/crear_competidor}" th:object="${competidorPorDisciplina}" method="post" enctype="multipart/form-data">

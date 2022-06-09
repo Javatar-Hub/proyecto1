@@ -21,7 +21,7 @@
     <header th:replace="layout/layout :: header"></header>
     <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="jumbotron text-white jumbotronimglistas" style="background-color: #001f61">
+        <div class="jumbotron text-white jumbotronimg" style="background-color: #0d0d0d">
           <h1>
             Bienvenido
             <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
@@ -37,8 +37,8 @@
             En este apartado podrá consultar información detallada de los jueces registrados
           </h6>
         </div>
-        <div class="card text-white" style="background-color: #ffffff2c">
-          <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
+        <div class="card text-white" style="background-color: #ffffffb1">
+          <h4 class="card-header text-white" style="background-color: #0d0d0d" th:text="${titulo}"></h4>
 
           <div class="card-body table-responsive">
             <h4 class="card-title">
@@ -48,7 +48,7 @@
             </h4>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
-              <thead class="text-white">
+              <thead>
                 <tr>
                   <th>#</th>
                   <th>Nombre</th>
@@ -72,7 +72,7 @@
                   <td th:text="${juez.usuario}">Usuario</td>
                   <td th:text="${juez.disciplina}">Disciplina</td>
                   <td th:text="${juez.edad}">Edad</td>
-                  <td th:text="${juez.foto}">Foto</td>
+                  <td><img th:src="@{${'/images/'+ juez.foto}}" class="card img-fluid" style="width: 100px" alt="Foto juez" /></td>
                   <td>
                     <a class="btn btn-info btn-sm" th:href="@{/ver/} + ${juez.id}"><i class="fa-solid fa-circle-info"></i> Detalles</a>
                   </td>
