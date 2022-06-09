@@ -13,6 +13,7 @@ import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
+import com.sistema.olimpiadas.servicio.DisciplinaServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +36,17 @@ public class CompetidorPorDisciplinaController {
   @Autowired
   private CompetidorPorDisciplinaServicio competidorPorDisciplinaServicio;
 
+  @Autowired
+  private DisciplinaServicio disciplinaServicio;
+
   private final Logger LOG = LoggerFactory.getLogger(CompetidorPorDisciplinaController.class);
 
   @GetMapping("/verCompetidores/{id}")
   public String verDetallesDelCompetidorPorDisciplina(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
       RedirectAttributes flash) {
     CompetidorPorDisciplina competidorPorDisciplina = competidorPorDisciplinaServicio.findOne(id);
+    Disciplina disciplinas=disciplinaServicio.findOne(Long.valueOf(competidorPorDisciplina.getDisciplina()));
+    ((Model) modelo).addAttribute("disciplina", disciplinas);
     if (competidorPorDisciplina == null) {
       flash.addFlashAttribute("error", "El CompetidorPorDisciplina no existe en la base de datos");
       return "redirect:/listar";
