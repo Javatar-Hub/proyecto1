@@ -52,7 +52,7 @@ public class JuezController {
   public String verDetallesDelJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
       RedirectAttributes flash) {
     Juez juez = juezServicio.findOne(id);
-    Disciplina disciplinas = disciplinaServicio.findOne(Long.valueOf(juez.getDisciplina()));
+    Disciplina disciplinas = disciplinaRepository.findByNombre((juez.getDisciplina()));
     ((Model) modelo).addAttribute("disciplina", disciplinas);
     if (juez == null) {
       flash.addFlashAttribute("error", "El juez no existe en la base de datos");
