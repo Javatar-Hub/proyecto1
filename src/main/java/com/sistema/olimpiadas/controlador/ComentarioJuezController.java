@@ -6,11 +6,13 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import com.sistema.olimpiadas.modelo.Disciplina;
+import com.sistema.olimpiadas.modelo.Juez;
 import com.sistema.olimpiadas.modelo.ComentarioJuez;
 import com.sistema.olimpiadas.modelo.CompetidorPorDisciplina;
 import com.sistema.olimpiadas.repositorios.ComentarioJuezRepository;
 import com.sistema.olimpiadas.repositorios.CompetidorPorDisciplinaRepository;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
+import com.sistema.olimpiadas.repositorios.JuezRepository;
 import com.sistema.olimpiadas.servicio.ComentarioJuezServicio;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
 
@@ -42,16 +44,23 @@ public class ComentarioJuezController {
   @Autowired
   private ComentarioJuezServicio comentarioServicio;
 
+  @Autowired
+  private JuezRepository juezRepository;
+
   private final Logger LOG = LoggerFactory.getLogger(CompetidorPorDisciplinaController.class);
 
   @GetMapping("/listarComentarios")
   public String busqueda(CompetidorPorDisciplina competidor, Model modelo, String keyword) {
+    String email = SecurityContextHolder.getContext()
+        .getAuthentication().getName();
+    Juez juez = juezRepository.findByEmail(email);
     if (keyword != null) {
       List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.getbyKeyword(keyword);
       modelo.addAttribute("competidores", competidorPorDisciplina);
       LOG.info("Busqueda");
     } else {
-      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaServicio.visualizarCompetidores();
+      List<CompetidorPorDisciplina> competidorPorDisciplina = competidorPorDisciplinaRepository
+          .findByDisciplina(juez.getDisciplina());
       modelo.addAttribute("competidores", competidorPorDisciplina);
       LOG.info("Pase");
     }
