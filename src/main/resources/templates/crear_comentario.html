@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- CSS only -->
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout/layout :: head">
+    <title>Crear comentario</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <header th:replace="layout/layout :: header"></header>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card jumbotronimg">
+          <h1 class="text-center" th:text="${titulo}" style="color: #ffffff"></h1>
+          <div class="card-body">
+            <form th:action="@{/crear_comentario}" th:object="${comentario}" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="nombre" style="color: #ffffff">Comentario</label>
+                <input type="text" class="form-control" th:field="*{comentario}" placeholder="Escriba su comentario" required />
+                <input type="hidden" th:field="*{idcompetidor}" />
+              </div>
+
+              <button type="submit" class="btn btn-success" sec:authorize="hasAuthority('JUEZ')">Agregar</button>
+              <a type="cancel" class="btn btn-danger text-light" onclick="window.location='/listarComentarios'">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <button type="cancel" class="btn btn-primary" onclick="window.location='/listarCompetidores'">Volver</button>
+    <footer th:replace="layout/layout :: footer"></footer>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+  crossorigin="a#nymous"
+/>
+<link rel="stylesheet" href="/css/styles.css" />
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<link rel="stylesheet" href="/css/styles.css" />
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,700');
+
+  .card-info {
+    background-color: rgba(255, 255, 255, 0.919);
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 2rem;
+    box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+  }
+  .card-info .banner {
+    background-image: url('https://logodownload.org/wp-content/uploads/2020/03/olimpiada-olympic-games-logo-0.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 11rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .card-info .banner img {
+    background-color: #fff;
+    width: 8rem;
+    height: 8rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: translateY(50%);
+    transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .card-info .banner img:hover {
+    transform: translateY(50%) scale(1.3);
+  }
+  .card-info .menu {
+    width: 100%;
+    height: 5.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .card-info .menu .opener {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: relative;
+    border-radius: 50%;
+    transition: background-color 100ms ease-in-out;
+  }
+  .card-info .menu .opener:hover {
+    background-color: #f2f2f2;
+  }
+  .card-info .menu .opener span {
+    background-color: #404040;
+    width: 0.4rem;
+    height: 0.4rem;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 0.2rem);
+    border-radius: 50%;
+  }
+  .card-info .menu .opener span:nth-child(1) {
+    top: 0.45rem;
+  }
+  .card-info .menu .opener span:nth-child(2) {
+    top: 1.05rem;
+  }
+  .card-info .menu .opener span:nth-child(3) {
+    top: 1.65rem;
+  }
+  .card-info h4.name {
+    text-align: center;
+    padding: 0 2rem 0.5rem;
+    margin: 0;
+  }
+  .card-info .title {
+    color: #a0a0a0;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0 2rem 1.2rem;
+  }
+  .card-info .actions {
+    padding: 0 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    order: 99;
+  }
+  .card-info .actions .follow-info {
+    padding: 0 0 1rem;
+    display: flex;
+  }
+  .card-info .actions .follow-info h2 {
+    text-align: center;
+    width: 50%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .card-info .actions .follow-info h2 a {
+    text-decoration: none;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.8rem;
+    transition: background-color 100ms ease-in-out;
+  }
+  .card-info .actions .follow-info h2 a span {
+    color: #ff7500;
+    font-weight: bold;
+    transform-origin: bottom;
+    transform: scaleY(1.3);
+    transition: color 100ms ease-in-out;
+  }
+  .card-info .actions .follow-info h2 a small {
+    color: #afafaf;
+    font-size: 0.85rem;
+    font-weight: normal;
+  }
+  .card-info-dis a:hover {
+    background-color: #dcdcdc;
+    color: #d16200;
+  }
+  .card-info .actions .follow-info h2 a:hover span {
+    color: #d16200;
+  }
+  .card-info .actions .follow-btn button {
+    color: inherit;
+    font: inherit;
+    font-weight: bold;
+    background-color: #ffd01a;
+    width: 100%;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 1.5rem/50%;
+    transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  }
+  .card-info .actions .follow-btn button:hover {
+    background-color: #efb10a;
+    transform: scale(1.1);
+  }
+  .card-info .actions .follow-btn button:active {
+    background-color: #e8a200;
+    transform: scale(1);
+  }
+  .card-info .desc {
+    text-align: justify;
+    padding: 0 2rem 2.5rem;
+    text-align: center;
+    order: 100;
+  }
+</style>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout/layout :: head">
+    <meta charset="utf-8" />
+  </head>
+  <body class="jumbotronimglistas" style="background-color: #0D0D0D">
+    <header th:replace="layout/layout :: header"></header>
+
+    <div class="py-3">
+      <div class="card-info">
+        <div class="banner">
+          <img viewBox="0 0 100 100" th:src="@{${'/images/'+ CompetidorPorDisciplina.foto}}" ></img>
+        </div>
+        <div class="menu">
+        </div>
+        <h4 class="name" th:text="${CompetidorPorDisciplina.nombre} + '&nbsp'  + ${CompetidorPorDisciplina.paterno} + '&nbsp' + ${CompetidorPorDisciplina.materno} "></h4>
+        <div class="title" th:text="${CompetidorPorDisciplina.usuario}"></div>
+        <div class="actions">
+          <div class="follow-info">
+            <h2 class="card-info-dis">
+              <a href="/listarDisciplinas"><span class="card-info-hover" th:text="${disciplina.nombre}"></span><small>Disciplina</small></a>
+            </h2>
+            
+            <h2>
+              <a href="#"><span th:text="${CompetidorPorDisciplina.edad}"></span><small>Edad</small></a>
+            </h2>
+          </div>
+
+          <td sec:authorize="hasAuthority('ADMIN')">
+            <a class="btn btn-warning btn-sm text-white" th:href="@{/form/} + ${CompetidorPorDisciplina.id}"
+              ><i class="fa-solid fa-pen-to-square"></i> Editar</a
+            >
+          </td>
+        </div>
+        <div class="desc">“Comparte el Espíritu”
+
+Lema de los Juegos Olímpicos de Sydney 2000</div>
+      </div>
+    </div>
+    <button type="cancel" class="btn btn-primary" onclick="window.location='/listarCompetidores'">Volver</button>
+
+    <footer th:replace="layout/layout :: footer"></footer>
+  </body>
+</html>
