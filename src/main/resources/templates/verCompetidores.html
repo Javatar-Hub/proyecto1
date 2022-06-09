@@ -103,13 +103,13 @@
     padding: 0 0 1rem;
     display: flex;
   }
-  .card-info .actions .follow-info h2 {
+  .card-info .actions .follow-info h3 {
     text-align: center;
     width: 50%;
     margin: 0;
     box-sizing: border-box;
   }
-  .card-info .actions .follow-info h2 a {
+  .card-info .actions .follow-info h3 a {
     text-decoration: none;
     padding: 0.8rem;
     display: flex;
@@ -117,14 +117,14 @@
     border-radius: 0.8rem;
     transition: background-color 100ms ease-in-out;
   }
-  .card-info .actions .follow-info h2 a span {
+  .card-info .actions .follow-info h3 a span {
     color: #ff7500;
     font-weight: bold;
     transform-origin: bottom;
     transform: scaleY(1.3);
     transition: color 100ms ease-in-out;
   }
-  .card-info .actions .follow-info h2 a small {
+  .card-info .actions .follow-info h3 a small {
     color: #afafaf;
     font-size: 0.85rem;
     font-weight: normal;
@@ -133,7 +133,7 @@
     background-color: #dcdcdc;
     color: #d16200;
   }
-  .card-info .actions .follow-info h2 a:hover span {
+  .card-info .actions .follow-info h3 a:hover span {
     color: #d16200;
   }
   .card-info .actions .follow-btn button {
@@ -168,7 +168,7 @@
   <head th:replace="layout/layout :: head">
     <meta charset="utf-8" />
   </head>
-  <body class="jumbotronimglistas" style="background-color: #0D0D0D">
+  <body  style="background-color: #0D0D0D">
     <header th:replace="layout/layout :: header"></header>
 
     <div class="py-3">
@@ -180,15 +180,15 @@
         </div>
         <h4 class="name" th:text="${CompetidorPorDisciplina.nombre} + '&nbsp'  + ${CompetidorPorDisciplina.paterno} + '&nbsp' + ${CompetidorPorDisciplina.materno} "></h4>
         <div class="title" th:text="${CompetidorPorDisciplina.usuario}"></div>
+        <div class="title" style="color: #ff77008e" th:text="${CompetidorPorDisciplina.plantel}"></div>
         <div class="actions">
           <div class="follow-info">
-            <h2 class="card-info-dis">
+            <h3 class="card-info-dis">
               <a href="/listarDisciplinas"><span class="card-info-hover" th:text="${disciplina.nombre}"></span><small>Disciplina</small></a>
-            </h2>
-            
-            <h2>
+            </h3>
+            <h3>
               <a href="#"><span th:text="${CompetidorPorDisciplina.edad}"></span><small>Edad</small></a>
-            </h2>
+            </h3>
           </div>
 
           <td sec:authorize="hasAuthority('ADMIN')">
