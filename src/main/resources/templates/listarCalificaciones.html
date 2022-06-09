@@ -49,7 +49,6 @@
             <table class="table table-striped">
               <thead class="text-white">
                 <tr>
-                  <th>ID</th>
                   <th>Nombre</th>
                   <th>Apellido Paterno</th>
                   <th>Apellido Materno</th>
@@ -58,12 +57,12 @@
                   <th>Plantel</th>
                   <th>Edad</th>
                   <th>Foto</th>
+                  <th>Detalles</th>
                   <th>Calificacion</th>
                 </tr>
               </thead>
               <tbody>
                 <tr th:each="competidorPorDisciplina : ${competidores}">
-                  <td th:text="${competidorPorDisciplina.id}">Nombre</td>
                   <td th:text="${competidorPorDisciplina.nombre}">Nombre</td>
                   <td th:text="${competidorPorDisciplina.paterno}">Apellido Paterno</td>
                   <td th:text="${competidorPorDisciplina.materno}">Apellido Materno</td>
@@ -71,7 +70,20 @@
                   <td th:text="${competidorPorDisciplina.disciplina}">Disciplina</td>
                   <td th:text="${competidorPorDisciplina.plantel}">Plantel</td>
                   <td th:text="${competidorPorDisciplina.edad}">Edad</td>
-                  <td th:text="${competidorPorDisciplina.foto}">Foto</td>
+                  <td>
+                    <img
+                      th:src="@{${'/images/'+ competidorPorDisciplina.foto}}"
+                      class="card img-fluid"
+                      style="width: 100px"
+                      alt="Foto juez"
+                    />
+                  </td>
+
+                  <td>
+                    <a class="btn btn-info btn-sm" th:href="@{/verCompetidores/} + ${competidorPorDisciplina.id}"
+                      ><i class="fa-solid fa-circle-info"></i> Detalles</a
+                    >
+                  </td>
 
                   <td>
                     <a class="btn btn-warning btn-sm" th:href="@{/crear_calificacion/} + ${competidorPorDisciplina.id}"

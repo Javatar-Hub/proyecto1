@@ -62,7 +62,6 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Nombre</th>
                   <th>Apellido Paterno</th>
                   <th>Apellido Materno</th>
@@ -78,7 +77,6 @@
               </thead>
               <tbody>
                 <tr th:each="competidorPorDisciplina : ${competidores}">
-                  <td th:text="${competidorPorDisciplina.id}">Nombre</td>
                   <td th:text="${competidorPorDisciplina.nombre}">Nombre</td>
                   <td th:text="${competidorPorDisciplina.paterno}">Apellido Paterno</td>
                   <td th:text="${competidorPorDisciplina.materno}">Apellido Materno</td>

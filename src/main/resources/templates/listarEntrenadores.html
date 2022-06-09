@@ -38,14 +38,13 @@
           </h6>
         </div>
         <div class="text-white" style="background-color: #ffffffb1">
-          <h4 class="card-header text-white" style="background-color: #0d0d0d">Lista de entrenadores registrados</h4>
+          <h4 class="card-header text-white" style="background-color: #0d0d0d">Lista de usuarios registrados</h4>
 
           <br />
 
           <table class="table table-striped">
-            <thead class="text-white">
+            <thead>
               <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
@@ -56,7 +55,6 @@
             <tbody>
               <!-- list users by role -->
               <tr th:each="usuario : ${usuarios}">
-                <td th:text="${usuario.id}">ID</td>
                 <td th:text="${usuario.nombre}">ID</td>
                 <td th:text="${usuario.apellidoPaterno}">ID</td>
                 <td th:text="${usuario.apellidoMaterno}">ID</td>

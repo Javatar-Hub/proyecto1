@@ -49,7 +49,6 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Disciplina</th>
                   <th>Detalles</th>
                   <th sec:authorize="hasAuthority('ADMIN')">Editar</th>
@@ -58,8 +57,7 @@
               </thead>
               <tbody>
                 <tr th:each="disciplina : ${Disciplinas}">
-                  <td th:text="${disciplina.id}">Nombre</td>
-                  <td th:text="${disciplina.nombre}">Nombre</td>
+                  <td style="font-size: 20px" th:text="${disciplina.nombre}">Nombre</td>
                   <td>
                     <a class="btn btn-info btn-sm" th:href="@{/verDisciplinas/} + ${disciplina.id}"
                       ><i class="fa-solid fa-circle-info"></i> Detalles</a
