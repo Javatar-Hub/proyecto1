@@ -50,7 +50,6 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Nombre</th>
                   <th>Apellido Paterno</th>
                   <th>Apellido Materno</th>
@@ -65,7 +64,6 @@
               </thead>
               <tbody>
                 <tr th:each="juez : ${jueces}">
-                  <td th:text="${juez.id}">Nombre</td>
                   <td th:text="${juez.nombre}">Nombre</td>
                   <td th:text="${juez.paterno}">Apellido Paterno</td>
                   <td th:text="${juez.materno}">Apellido Materno</td>
