@@ -50,7 +50,9 @@
       </div>
     </div>
     <br />
-    <button type="cancel" class="btn btn-primary" onclick="window.location='/'">Volver</button>
+    <form>
+      <input type="button" class="btn btn-primary" value="Volver!" onclick="history.go(-1)" />
+    </form>
     <footer th:replace="layout/layout :: footer"></footer>
     <div
       class="floating-text-jueces"

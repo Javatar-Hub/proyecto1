@@ -204,7 +204,9 @@
 Lema de los Juegos Olímpicos de Sydney 2000</div>
       </div>
     </div>
-    <button type="cancel" class="btn btn-primary" onclick="window.location='/listar'">Volver</button>
+    <form>
+      <input type="button" class="btn btn-primary"value="Volver!" onclick="history.go(-1)">
+     </form>
 
     <footer th:replace="layout/layout :: footer"></footer>
     <div
