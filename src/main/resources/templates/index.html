@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <link rel="stylesheet" href="/css/styles.css" />
 <html xmlns:th="http://www.thymeleaf.org">
-  <title>Dasboard</title>
+  <title>Dashboard</title>
 
   <body>
     <h1 class="Titulo app-header" sec:authorize="hasAuthority('ADMIN')">Dashboard de Administrador</h1>
@@ -101,7 +101,7 @@
         </div>
       </a>
 
-      <a class="link" href="#">
+      <a class="link" href="listarCalificaciones">
         <div class="courses-container zoom float-child-jueces" sec:authorize="hasAuthority('JUEZ')">
           <div class="course">
             <div class="calificar-color">
@@ -149,7 +149,7 @@
         </div>
       </a>
 
-      <a class="link" href="#">
+      <a class="link" href="consultar_calificaciones">
         <div class="courses-container zoom float-child-entrenadores" sec:authorize="hasAuthority('COMPETIDOR')">
           <div class="course">
             <div class="calificar-color">
@@ -159,7 +159,7 @@
             <div class="course-info">
               <div class="progress-container"></div>
               <h6>Calificaciones</h6>
-              <h3>Consultar califiaciones</h3>
+              <h3>Consultar calificaciones</h3>
             </div>
           </div>
         </div>
@@ -191,7 +191,7 @@
             <div class="course-info">
               <div class="progress-container"></div>
               <h6>Calificaciones</h6>
-              <h3>Consultar califiaciones</h3>
+              <h3>Consultar calificaciones</h3>
             </div>
           </div>
         </div>
