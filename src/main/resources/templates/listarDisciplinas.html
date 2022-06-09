@@ -20,7 +20,7 @@
     <header th:replace="layout/layout :: header"></header>
     <div class="">
       <div class="py-4 ml-5 mr-5">
-        <div class="jumbotron text-white jumbotronimglistas" style="background-color: #001f61">
+        <div class="jumbotron text-white jumbotronimg" style="background-color: #0d0d0d">
           <h1>
             Bienvenido <a style="color: #ff7500"> [[${#httpServletRequest.remoteUser}]]</a
             ><img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px" />
@@ -37,8 +37,8 @@
             En este apartado podrá consultar información detallada de las disciplinas registradas
           </h6>
         </div>
-        <div class="card text-white" style="background-color: #ffffff2c">
-          <h4 class="card-header text-white" style="background-color: #001f61" th:text="${titulo}"></h4>
+        <div class="card text-white" style="background-color: #ffffffb1">
+          <h4 class="card-header text-white" style="background-color: #0d0d0d" th:text="${titulo}"></h4>
           <div class="card-body table-responsive">
             <h4 class="card-title">
               <a th:href="@{/crear_disciplina}" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')"
@@ -47,7 +47,7 @@
             </h4>
             <h4 class="card-title"></h4>
             <table class="table table-striped">
-              <thead class="text-white">
+              <thead>
                 <tr>
                   <th>#</th>
                   <th>Disciplina</th>
