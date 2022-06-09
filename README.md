@@ -56,7 +56,6 @@ Y navegue a http://127.0.0.1:8080
 - **José Demian Jiménez Salgado** - _CRUD Disciplinas y consulta de competidores_ - [demian35](https://github.com/demian35)
 - **Carlos Cruz Rangel** - _CRUD Competidores, Registro entrenadores_ - [CarlosCruzRangel](https://github.com/CarlosCruzRangel)
 - **Juan Manuel Díaz Quiñonez** - _Agregar comentarios consultar competidores_ - [JuanDiazDev](https://github.com/JuanDiazDev)
-- **Toprak Memik Hernandez** - _Consultar calificaciones, consultar tabla de posiciones_ - [ToprakShakur](https://github.com/ToprakShakur)
 
 ## TO-DO LIST ✅
 
@@ -66,9 +65,9 @@ Y navegue a http://127.0.0.1:8080
 - [x] Consultar Competidores
 - [x] CRUD Competidores
 - [x] Registro entrenadores
-- [ ] Agregar comentarios
+- [x] Agregar comentarios
 - [ ] Consultar competidores
-- [ ] Consultar calificaciones
+- [x] Consultar calificaciones
 - [ ] Consultar tabla de posiciones
 
 
