@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import com.sistema.olimpiadas.modelo.Disciplina;
 import com.sistema.olimpiadas.modelo.Juez;
 import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
+import com.sistema.olimpiadas.servicio.DisciplinaServicio;
 import com.sistema.olimpiadas.servicio.JuezServicio;
 import com.sistema.olimpiadas.util.paginacion.PageRender;
 
@@ -31,12 +32,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.sistema.olimpiadas.repositorios.DisciplinaRepository;
 
 @Controller
 public class JuezController {
 
   @Autowired
   private JuezServicio juezServicio;
+  @Autowired
+  private DisciplinaServicio disciplinaServicio;
 
   // @RequestMapping(value = "/", method = RequestMethod.GET)
   // public String index(Model modelo) {
@@ -48,6 +52,8 @@ public class JuezController {
   public String verDetallesDelJuez(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
       RedirectAttributes flash) {
     Juez juez = juezServicio.findOne(id);
+    Disciplina disciplinas = disciplinaServicio.findOne(Long.valueOf(juez.getDisciplina()));
+    ((Model) modelo).addAttribute("disciplina", disciplinas);
     if (juez == null) {
       flash.addFlashAttribute("error", "El juez no existe en la base de datos");
       return "redirect:/listar";
@@ -56,6 +62,7 @@ public class JuezController {
     modelo.put("juez", juez);
     modelo.put("titulo", "Detalles del juez " + juez.getNombre());
     return "ver";
+
   }
 
   @GetMapping({ "/listar" })
