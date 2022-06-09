@@ -33,4 +33,8 @@ public class CalificacionServicioImpl implements CalificacionServicio {
     return calificacionRepository.findByUsuario(competidor);
   }
 
+  @Override
+  public long cuentaCalificaciones() {
+    return calificacionRepository.countByIdCalificaciones();
+  }
 }

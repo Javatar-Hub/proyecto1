@@ -33,4 +33,9 @@ public class ComentarioJuezServicioImpl implements ComentarioJuezServicio {
     return comentarioJuezRepository.findByCompetidor(idcompetidor);
   }
 
+  @Override
+  public long cuentaComentarios() {
+    return comentarioJuezRepository.countByIdComentarios();
+  }
+
 }

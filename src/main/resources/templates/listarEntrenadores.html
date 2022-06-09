@@ -42,19 +42,6 @@
 
           <br />
 
-          <form class="input-group" th:action="@{/listarEntrenadores}" method="get">
-            <input
-              type="text"
-              id="keyword"
-              class="form-control"
-              name="keyword"
-              th:value="${keyword}"
-              placeholder="Busqueda por nombre ó apellido"
-              size="50"
-            />
-            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
-            <button type="submit" class="btn btn-light"><i class="fa-solid fa-rotate-right"></i></button>
-          </form>
           <table class="table table-striped">
             <thead class="text-white">
               <tr>

@@ -12,4 +12,6 @@ public interface CalificacionServicio {
 
   public List<Calificacion> findCalificacionPorCompetidor(Long competidor);
 
+  public long cuentaCalificaciones();
+
 }
