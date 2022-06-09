@@ -11,4 +11,7 @@ import org.springframework.data.repository.query.Param;
 public interface CalificacionRepository extends JpaRepository<Calificacion, Long> {
   @Query(value = "select * from calificaciones c where c.competidor = :usuario", nativeQuery = true)
   List<Calificacion> findByUsuario(@Param("usuario") Long usuario);
+
+  @Query("select count(c) from Calificacion c ")
+  long countByIdCalificaciones();
 }
