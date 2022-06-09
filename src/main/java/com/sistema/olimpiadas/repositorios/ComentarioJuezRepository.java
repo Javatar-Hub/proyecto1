@@ -12,4 +12,6 @@ public interface ComentarioJuezRepository extends JpaRepository<ComentarioJuez, 
   @Query(value = "select * from comentarios c where c.idcompetidor = :competidor", nativeQuery = true)
   List<ComentarioJuez> findByCompetidor(@Param("competidor") Long competidor);
 
+  @Query("select count(c) from ComentarioJuez c ")
+  long countByIdComentarios();
 }

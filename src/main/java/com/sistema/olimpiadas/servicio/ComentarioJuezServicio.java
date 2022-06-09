@@ -12,4 +12,6 @@ public interface ComentarioJuezServicio {
 
   public List<ComentarioJuez> findComentariosPorCompetidor(Long idcompetidor);
 
+  public long cuentaComentarios();
+
 }

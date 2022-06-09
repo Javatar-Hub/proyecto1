@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sistema.olimpiadas.servicio.CalificacionServicio;
+import com.sistema.olimpiadas.servicio.ComentarioJuezServicio;
 import com.sistema.olimpiadas.servicio.CompetidorPorDisciplinaServicio;
 import com.sistema.olimpiadas.servicio.DisciplinaServicio;
 import com.sistema.olimpiadas.servicio.EntrenadorServicio;
@@ -25,6 +26,8 @@ public class IndexController {
   private EntrenadorServicio entrenadorServicio;
   @Autowired
   private CalificacionServicio calificacionServicio;
+  @Autowired
+  private ComentarioJuezServicio comentarioJuezServicio;
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String index(Model modelo) {
@@ -33,6 +36,7 @@ public class IndexController {
     modelo.addAttribute("competidores", competidorPorDisciplinaServicio.cuentaCompetidores());
     modelo.addAttribute("usuarios", entrenadorServicio.cuentaUsuarios());
     modelo.addAttribute("calificaciones", calificacionServicio.cuentaCalificaciones());
+    modelo.addAttribute("comentarios", comentarioJuezServicio.cuentaComentarios());
     return "index";
   }
 }
