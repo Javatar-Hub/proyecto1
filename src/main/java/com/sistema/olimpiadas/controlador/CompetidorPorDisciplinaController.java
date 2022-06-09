@@ -45,7 +45,7 @@ public class CompetidorPorDisciplinaController {
   public String verDetallesDelCompetidorPorDisciplina(@PathVariable(value = "id") Long id, Map<String, Object> modelo,
       RedirectAttributes flash) {
     CompetidorPorDisciplina competidorPorDisciplina = competidorPorDisciplinaServicio.findOne(id);
-    Disciplina disciplinas=disciplinaServicio.findOne(Long.valueOf(competidorPorDisciplina.getDisciplina()));
+    Disciplina disciplinas=disciplinaRepository.findByNombre((competidorPorDisciplina.getDisciplina()));
     ((Model) modelo).addAttribute("disciplina", disciplinas);
     if (competidorPorDisciplina == null) {
       flash.addFlashAttribute("error", "El CompetidorPorDisciplina no existe en la base de datos");
