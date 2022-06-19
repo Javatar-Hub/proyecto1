@@ -77,5 +77,9 @@ Y navegue a http://127.0.0.1:8080
 - Invita una cerveza 🍺 o un café ☕ a alguien del equipo.
 - 10/10 al proyecto 💯
 
+## App Design
+![Cover](https://user-images.githubusercontent.com/41756950/174465625-c68a1b4e-1218-4d5f-9672-5800f513e974.png)
+
+
 ---
 ⌨️ con ❤️ por [JAVATAR](https://github.com/Javatar-Hub) 😊
